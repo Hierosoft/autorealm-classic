@@ -17,12 +17,10 @@
  +------------------------------------------------------------------------+}
 unit AutoName;
 
-{$MODE Delphi}
-
 interface
 
 uses
-  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, CheckLst, Buttons, ExtCtrls;
 
 type
@@ -56,7 +54,7 @@ var
 
 implementation
 
-{$R *.lfm}
+{$R *.DFM}
 
 uses AutoNameGenerator,SelectFont,Clipbrd,LocalizedStrings;
 

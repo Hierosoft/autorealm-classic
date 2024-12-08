@@ -1,7 +1,5 @@
 unit AutoNameGenerator;
 
-{$MODE Delphi}
-
 {+------------------------------------------------------------------------+
  | AutoREALM.   Copyright (c) 2000, Andrew J. Gryc.                       |
  |                                                                        |
@@ -100,7 +98,7 @@ implementation
 
  +------------------------------------------------------------------------+*)
 
-uses Classes, Forms, LCLIntf, LCLType, LMessages, Messages, Dialogs, SysUtils;
+uses Classes, Forms, Windows, Messages, Dialogs, SysUtils;
 
 type PRule = ^Rule;
      Rule = record

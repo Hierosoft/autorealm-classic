@@ -1,0 +1,54 @@
+AutoNameGen.lpi Note: Added defines -dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL in custom options
+ Progress: Found all unit files
+AutoNameGen.lpr(1,21) Note: Added MODE Delphi syntax modifier after unit name.
+ : 
+ : *** Converting unit files belonging to project/package ***
+AutoName.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+AutoName.pas(18,15) Note: Added MODE Delphi syntax modifier after unit name.
+AutoNameGenerator.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+AutoNameGenerator.pas(1,24) Note: Added MODE Delphi syntax modifier after unit name.
+ : 
+ : *** Converting unit files found during conversion ***
+LocalizedStrings.pas Note: Changed encoding from ISO-8859-1 to UTF-8
+LocalizedStrings.pas(1,23) Note: Added MODE Delphi syntax modifier after unit name.
+SelectFont.pas(76,16) Note: Fixed character case of unit "Main" to "MAIN".
+SelectFont.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+SelectFont.pas(18,17) Note: Added MODE Delphi syntax modifier after unit name.
+ : 
+ : *** Fixing used units and Repairing form files ***
+AutoName.pas Note: Removed property "TextHeight".
+AutoName.pas Note: Removed property "OldCreateOrder".
+AutoName.pas Note: Changed Top coord of TComboBox from "4" to "2" inside TPanel.
+AutoName.pas Note: Changed Left coord of TComboBox from "4" to "2" inside TPanel.
+AutoName.pas Note: Changed Top coord of TPanel from "1" to "0" inside TPanel.
+AutoName.pas Note: Changed Left coord of TPanel from "118" to "116" inside TPanel.
+AutoName.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+AutoName.pas Note: Changed Left coord of TSpeedButton from "87" to "85" inside TPanel.
+AutoName.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+AutoName.pas Note: Changed Left coord of TSpeedButton from "58" to "56" inside TPanel.
+AutoName.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+AutoName.pas Note: Changed Left coord of TSpeedButton from "29" to "27" inside TPanel.
+AutoName.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+AutoName.pas Note: Changed Left coord of TSpeedButton from "0" to "0" inside TPanel.
+AutoName.pas Note: Changed Top coord of TPanel from "1" to "0" inside TPanel.
+AutoName.pas Note: Changed Left coord of TPanel from "1" to "0" inside TPanel.
+SelectFont.pas Note: Removed property "TextHeight".
+SelectFont.pas Note: Removed property "OldCreateOrder".
+SelectFont.pas Note: Changed Top coord of TComboBox from "2" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TComboBox from "172" to "170" inside TPanel.
+SelectFont.pas Note: Changed Top coord of TComboBox from "2" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TComboBox from "0" to "0" inside TPanel.
+SelectFont.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TSpeedButton from "360" to "358" inside TPanel.
+SelectFont.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TSpeedButton from "336" to "334" inside TPanel.
+SelectFont.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TSpeedButton from "312" to "310" inside TPanel.
+SelectFont.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TSpeedButton from "280" to "278" inside TPanel.
+SelectFont.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TSpeedButton from "256" to "254" inside TPanel.
+SelectFont.pas Note: Changed Top coord of TSpeedButton from "0" to "0" inside TPanel.
+SelectFont.pas Note: Changed Left coord of TSpeedButton from "232" to "230" inside TPanel.
+ Progress: Conversion took: 00:01:13
+ : Conversion Ready.
