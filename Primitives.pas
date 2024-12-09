@@ -19,9 +19,10 @@ unit Primitives;
 
 interface
 
-uses SysUtils, Windows, Classes, Graphics, Forms, MatrixMath, Math, Geometry,
-     GraphGrid, DrawLines, XDOM_2_3, DIMime,      Dialogs;
-
+uses SysUtils, LCLIntf, Classes, Graphics, Forms, MatrixMath, Math, Geometry,
+     GraphGrid, DrawLines, DOM,      Dialogs;
+{ XDOM_2_3, DIMime }
+{ LCLIntf provides cross-platform GUI classes }
 const IconFontName = 'AutoREALMSymbols';
       QuickDraw_Fills=$00000001;
       QuickDraw_Lines=$00000002;
@@ -223,12 +224,12 @@ type OverlaySet = set of byte;
         function SelectClick(const within:double; p:CoordPoint):boolean; virtual;
 
         function OnScreen(const Coord:CoordRect):boolean;
-        procedure Invalidate(const Handle:HWND; const View:Viewpoint);
+        procedure Invalidate(const Handle: THandle; const View: ViewPoint);
 
         function Decompose(const View:ViewPoint; var NewChain:DrawPrimitive; testinside:boolean=true):boolean; virtual;
-        procedure InvalidateHandle(const Handle:HWND; const View:ViewPoint; x,y:Coord);
+        procedure InvalidateHandle(const Handle: THandle; const View: ViewPoint; x, y: Coord);
         procedure DrawHandle(const View:ViewPoint; x,y:Coord);
-        procedure DrawOverlayHandle(View:ViewPoint; x,y:Coord);
+        procedure DrawOverlayHandle(View: ViewPoint; x, y: Coord);
         function  TestHandle(const View:ViewPoint; tx,ty,px,py:Coord):boolean;
         function PointClosestInArray(x,y:Coord; points:PCoordArray; count:integer):integer;
         function PointClosestInAdjustedArray(x,y:Coord; points:PCoordArray; count:integer):integer;
@@ -244,7 +245,7 @@ type OverlaySet = set of byte;
         procedure DrawHandles(const View:ViewPoint); virtual;
         procedure DrawOverlayHandles(const View:ViewPoint); virtual;
         procedure PointClosestTo(x,y:Coord; var px,py:Coord); virtual;
-        procedure InvalidateHandles(const Handle: HWnd; const View:ViewPoint); virtual;
+        procedure InvalidateHandles(const Handle: THandle; const View: ViewPoint); virtual;
         function FindScalpelPoint(const View:ViewPoint; x,y:Coord; var index:integer):boolean; virtual;
         function SeparateNode(const View:ViewPoint; index:integer; var NewObject:DrawPrimitive):boolean; virtual;
         procedure DeleteNode(const View:ViewPoint; index:integer); virtual;
@@ -450,7 +451,7 @@ type OverlaySet = set of byte;
 
         procedure Draw(View:ViewPoint); override;
         procedure DrawHandles(const View:ViewPoint); override;
-        procedure InvalidateHandles(const Handle: HWnd; const View:ViewPoint); override;
+        procedure InvalidateHandles(const Handle: THandle; const View: ViewPoint); override;
         procedure DrawOverlayHandles(const View:ViewPoint); override;
         function Decompose(const View:ViewPoint; var NewChain:DrawPrimitive; testinside:boolean=true):boolean; override;
         function ApplyMatrix(var mat:Matrix):boolean; override;
@@ -517,7 +518,7 @@ type OverlaySet = set of byte;
         function Decompose(const View:ViewPoint; var NewChain:DrawPrimitive; testinside:boolean=true):boolean; override;
         procedure Draw(View:ViewPoint); override;
         procedure DrawHandles(const View:ViewPoint); override;
-        procedure InvalidateHandles(const Handle: HWnd; const View:ViewPoint); override;
+        procedure InvalidateHandles(const Handle: THandle; const View: ViewPoint); override;
         procedure DrawOverlayHandles(const View:ViewPoint); override;
         function  ApplyMatrix(var mat:Matrix):boolean; override;
         function  FindHandle(const View:ViewPoint; x,y:Coord):boolean; override;
@@ -2313,12 +2314,18 @@ begin
   Result:=false;
 end;
 
-procedure DrawPrimitive.Invalidate(const Handle:HWND; const View:ViewPoint);
-var r:TRect;
+procedure DrawPrimitive.Invalidate(const Handle: THandle; const View: ViewPoint);
+var
+  r: TRect;
 begin
-  r:=View.CoordToScreenRect(Extent);
-  Windows.InvalidateRect(Handle,@r,true);
-  InvalidateHandles(Handle,View);
+  // Convert view extent to screen rectangle
+  r := View.CoordToScreenRect(Extent);
+
+  // Invalidate the specified rectangle on the Handle
+  InvalidateRect(Handle, @r, True);
+
+  // Call a helper method to invalidate related handles
+  InvalidateHandles(Handle, View);
 end;
 
 function DrawPrimitive.ChainApplyMatrix(mat:Matrix; all:boolean):boolean;
@@ -3689,16 +3696,23 @@ begin
   LastHandleY:=9E99;
 end;
 
-procedure DrawPrimitive.InvalidateHandle(const Handle:HWND; const View:ViewPoint; x,y:Coord);
-var sx,sy:integer;
-    rect:TRect;
+procedure DrawPrimitive.InvalidateHandle(const Handle: THandle;
+  const View: ViewPoint; x, y: Coord);
+var
+  sx, sy: Integer;
+  rect: TRect;
 begin
-  View.CoordToScreen(x,y,sx,sy);
-  rect.left:= sx-3;
-  rect.top := sy-3;
-  rect.right:=sx+3;
-  rect.bottom:=sy+3;
-  Windows.InvalidateRect(Handle, @rect, true);
+  // Convert logical coordinates to screen coordinates
+  View.CoordToScreen(x, y, sx, sy);
+
+  // Define a rectangle around the point
+  rect.Left := sx - 3;
+  rect.Top := sy - 3;
+  rect.Right := sx + 3;
+  rect.Bottom := sy + 3;
+
+  // Invalidate the rectangle on the handle
+  InvalidateRect(Handle, @rect, True);
 end;
 
 procedure DrawPrimitive.DrawHandle(const View:ViewPoint; x,y:Coord);
@@ -3734,24 +3748,27 @@ begin
   Result:=PtInRect(Rect(stx-2,sty-2,stx+3,sty+3), Point(spx,spy));
 end;
 
-procedure DrawPrimitive.DrawOverlayHandle(View:ViewPoint; x,y:Coord);
-Var
-  sx,sy :integer;
-  V     : ViewPoint;
-
+procedure DrawPrimitive.DrawOverlayHandle(View: ViewPoint; x, y: Coord);
+var
+  sx, sy: Integer;
+  V: ViewPoint;
 begin
-  // Note the call to MakeAliasView() to create a shifted ViewPoint that points
-  // to the base object's coordinates.  If it was necessary to shift the
-  // viewpoint, it will be deallocated below.  This technique is used in Draw()
-  // methods as well and is especially useful for when dealing with
-  // GroupPrimitives.
-
+  // Create a shifted ViewPoint, if necessary
   V := MakeAliasView(View);
-  V.CoordToScreen(x,y,sx,sy);
-  MainForm.OverlayImages.Draw(V.Canvas,sx,sy,
-                              MainForm.OverlayList.ImageIndex[fOverlay]);
-  If V <> View Then V.Free;                            
+
+  // Convert logical coordinates to screen coordinates
+  V.CoordToScreen(x, y, sx, sy);
+
+  // Use Lazarus-compatible drawing code
+  if Assigned(MainForm.OverlayImages) then
+    MainForm.OverlayImages.Draw(V.Canvas, sx, sy,
+      MainForm.OverlayList.ImageIndex[fOverlay]);
+
+  // Deallocate the shifted ViewPoint if it was created
+  if V <> View then
+    V.Free;
 end;
+
 
 procedure DrawPrimitive.DrawOverlayHandles(const View:ViewPoint);
 begin
@@ -6050,14 +6067,20 @@ begin
   SetLength(YN,0);
 end;
 
-procedure CurvePrimitive.InvalidateHandles(const Handle:HWND; const View:ViewPoint);
-Var PP2,PP3: CoordPoint;
+procedure CurvePrimitive.InvalidateHandles(const Handle: THandle;
+  const View: ViewPoint);
+var
+  PP2, PP3: CoordPoint;
 begin
+  // Get adjusted points for the curve
   PP2 := GetAdjustedP2;
   PP3 := GetAdjustedP3;
+
+  // Invalidate the area around each point
   InvalidateHandle(Handle, View, PP2.x, PP2.y);
   InvalidateHandle(Handle, View, PP3.x, PP3.y);
 end;
+
 
 function CurvePrimitive.GetLines(const View:ViewPoint; var polycount:integer):PCoordArray;
 var continue:TLineContinue;
@@ -7201,16 +7224,29 @@ begin
   SetLength(YP,0);
 end;
 
-procedure PolyCurvePrimitive.InvalidateHandles(const Handle:HWND; const View:ViewPoint);
-var i: integer;
+procedure PolyCurvePrimitive.InvalidateHandles(const Handle: THandle;
+  const View: ViewPoint);
+var
+  i: Integer;
 begin
-  i:=0;
-  while (i<Count-1) do begin
-     InvalidateHandle(Handle,View,GetAdjustedX(points^[i+1].x),GetAdjustedY(points^[i+1].y));
-     InvalidateHandle(Handle,View,GetAdjustedX(points^[i+2].x),GetAdjustedY(points^[i+2].y));
-     inc(i,3);
-     end;
+  i := 0;
+  while i < Count - 1 do
+  begin
+    // Invalidate the area around the first adjusted point
+    InvalidateHandle(Handle, View,
+      GetAdjustedX(points^[i + 1].x),
+      GetAdjustedY(points^[i + 1].y));
+
+    // Invalidate the area around the second adjusted point
+    InvalidateHandle(Handle, View,
+      GetAdjustedX(points^[i + 2].x),
+      GetAdjustedY(points^[i + 2].y));
+
+    // Increment index for the next set of points
+    Inc(i, 3);
+  end;
 end;
+
 
 function PolyCurvePrimitive.FindScalpelPoint(const View:ViewPoint; x,y:Coord; var index:integer):boolean;
 var i:integer;

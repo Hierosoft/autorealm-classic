@@ -19,8 +19,8 @@ unit DrawLines;
 
 interface
 
-uses SysUtils, Windows, Classes, Graphics, Geometry, Logging;
-
+uses SysUtils, Classes, Graphics, Geometry, Logging;
+{ Windows }
 type
      TFullStyle = Packed Record
        Bits       : Cardinal;

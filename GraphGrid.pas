@@ -19,8 +19,10 @@ unit GraphGrid;
 
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, StdCtrls,
-     Menus, XDOM_2_3;
+uses SysUtils, Messages, Classes, Graphics, Controls, Forms, StdCtrls,
+     DOM, Menus;
+{ fcl_xml }
+{ uses XDOM_2_3; }
 
 const DefaultUnit=12;
       gfGridOnTop = 1;

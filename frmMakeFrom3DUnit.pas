@@ -3,7 +3,7 @@ unit frmMakeFrom3DUnit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, StdCtrls, ExtCtrls, Buttons, Geometry;
 
 type
@@ -1257,168 +1257,78 @@ Begin
    Else Result := Col;
 End; // TfrmMakeFrom3D.GetOutlineColor
 
-Procedure TfrmMakeFrom3D.PaintModel;
-Var
-  XC,YC   : Integer;
-  I       : Integer;
-  Polygon : TPolygon;
-  Surface : TSurface;
-  Col     : TColor;
+procedure TfrmMakeFrom3D.PaintModel;
+var
+  XC, YC: Integer;
+  I: Integer;
+  Polygon: TPolygon;
+  Surface: TSurface;
+  Col: TColor;
 
-  // Not used, as we are using polygons, but keeping it here in case we want to
-  // use it later (such as creating hollow meshes or something)
-  Procedure DrawBezier(Canvas: TCanvas; B: TBezier);
-
-    Procedure DoBezier(Depth: Integer; B: TBezier);
-    Var
-      Q1,Q2,Q3: TVector;
-      R1,R2,S1: TVector;
-
-    Begin
-      If (Depth <> 1) And (Abs(B.V1.X - B.V4.X) < 3) And (Abs(B.V1.Y - B.V4.Y) < 3) Then
-       Canvas.LineTo(Round(B.V4.X) + XC,Round(B.V4.Y) + YC)
-      Else
-      Begin
-        Q1 := VEC_Average(B.V1,B.V2);
-        Q2 := VEC_Average(B.V2,B.V3);
-        Q3 := VEC_Average(B.V3,B.V4);
-        R1 := VEC_Average(Q1,Q2);
-        R2 := VEC_Average(Q2,Q3);
-        S1 := VEC_Average(R1,R2);
-
-        Inc(Depth);
-        DoBezier(Depth,BEZ(B.V1,Q1,R1,S1));
-        DoBezier(Depth,BEZ(S1,R2,Q3,B.V4));
-      End;
-    End; // DoBezier
-
-  Begin
-    B := BProject(B);
-    Canvas.MoveTo(Round(B.V1.X) + XC,Round(B.V1.Y) + YC);
-    DoBezier(1,B);
-  End; // DrawBezier
-
-  // Not used.  Strictly for testing purposes, as it produces a dead-accurate
-  // curve from the 3D source.  As such, it will differ from that which is
-  // finally exported to AutoREALM.
-  Procedure Draw3DBezier(Canvas: TCanvas; B: TBezier);
-  Var P: TVector;
-
-    Procedure DoBezier(Depth: Integer; B: TBezier);
-    Var
-      Q1,Q2,Q3 : TVector;
-      R1,R2,S1 : TVector;
-      P1,P2    : TVector;
-
-    Begin
-      P1 := RProject(B.V1);
-      P2 := RProject(B.V4);
-      P1 := VEC_Sub(P1,P2);
-
-      If (Depth <> 1) And (VEC_Length(P1) < 3) Then Canvas.LineTo(Round(P2.X) + XC,Round(P2.Y) + YC)
-      Else
-      Begin
-        Q1 := VEC_Average(B.V1,B.V2);
-        Q2 := VEC_Average(B.V2,B.V3);
-        Q3 := VEC_Average(B.V3,B.V4);
-        R1 := VEC_Average(Q1,Q2);
-        R2 := VEC_Average(Q2,Q3);
-        S1 := VEC_Average(R1,R2);
-
-        Inc(Depth);
-        DoBezier(Depth,BEZ(B.V1,Q1,R1,S1));
-        DoBezier(Depth,BEZ(S1,R2,Q3,B.V4));
-      End;
-    End; // DoBezier
-
-  Begin
-    P := RProject(B.V1);
-    Canvas.MoveTo(Round(P.X) + XC,Round(P.Y) + YC);
-    DoBezier(1,B);
-  End; // Draw3DBezier
-
-  Procedure DrawEnclosedFigure(Canvas: TCanvas; Points: TPolygon;
-                               EdgeColor,FillColor: TColor; Closed: Boolean);
-  Var
-    SX1,SY1,SX2,SY2 : Integer;
-    OldColor        : TColor;
-    OldBrushColor   : TColor;
-    I               : Integer;
-    Poly            : PPointArray;
-    Count           : Integer;
-
-  Begin
-    Count := High(Points) + 1;
-    If Count > 0 Then
-    Begin
-      GetMem(Poly,Count * SizeOf(TPoint));
-
-      For I := 0 To Count - 1 Do
+  procedure DrawEnclosedFigure(Canvas: TCanvas; Points: TPolygon;
+    EdgeColor, FillColor: TColor; Closed: Boolean);
+  var
+    Poly: array of TPoint;
+    OldPenColor, OldBrushColor: TColor;
+    I: Integer;
+  begin
+    if Length(Points) > 0 then
+    begin
+      SetLength(Poly, Length(Points));
+      for I := 0 to High(Points) do
       begin
-        Poly^[I].X := Round(Points[I].X + XC);
-        Poly^[I].Y := Round(Points[I].Y + YC);
-      End; // For I
-      OldColor := Canvas.Pen.Color;
+        Poly[I].X := Round(Points[I].X + XC);
+        Poly[I].Y := Round(Points[I].Y + YC);
+      end;
 
-      If (FillColor <> clNone) And Closed Then
-      Begin
-        OldBrushColor      := Canvas.Brush.Color;
-        Canvas.Pen.Style   := psClear;
+      OldPenColor := Canvas.Pen.Color;
+      OldBrushColor := Canvas.Brush.Color;
 
-        Canvas.Pen.Color   := FillColor;
+      if (FillColor <> clNone) and Closed then
+      begin
         Canvas.Brush.Color := FillColor;
         Canvas.Brush.Style := bsSolid;
-
-        Windows.Polygon(Canvas.Handle, Poly^, Count);
-        Canvas.Pen.Style   := psSolid;
-        Canvas.Brush.Color := OldBrushColor;
-      End;
+        Canvas.Pen.Style := psClear;
+        Canvas.Polygon(Poly);
+      end;
 
       Canvas.Pen.Color := EdgeColor;
+      Canvas.Brush.Color := OldBrushColor;
+      Canvas.Pen.Style := psSolid;
 
-      SX1 := Poly^[0].X;
-      SY1 := Poly^[0].Y;
+      if Closed then
+        Canvas.Polygon(Poly)
+      else
+        for I := 0 to High(Poly) - 1 do
+          Canvas.Line(Poly[I].X, Poly[I].Y, Poly[I + 1].X, Poly[I + 1].Y);
 
-      For I := 1 To Count - 1 Do
-      Begin
-        SX2 := Poly^[I].X;
-        SY2 := Poly^[I].Y;
-        Canvas.MoveTo(SX1,SY1);
-        Canvas.LineTo(SX2,SY2);
-        SX1 := SX2;
-        SY1 := SY2;
-      End; // For I
+      Canvas.Pen.Color := OldPenColor;
+    end;
+  end;
 
-      Canvas.Pen.Color := OldColor;
-      FreeMem(Poly,Count * SizeOf(TPoint));
-    End;
-  End; // DrawEnclosedFigure
-
-Begin
-  XC := imgMain.Width  Div 2;
-  YC := imgMain.Height Div 2;
+begin
+  XC := imgMain.Width div 2;
+  YC := imgMain.Height div 2;
 
   // Clear the painting area
-
-  imgMain.Canvas.Pen.Color   := clWhite;
+  imgMain.Canvas.Pen.Color := clWhite;
   imgMain.Canvas.Brush.Color := clWhite;
   imgMain.Canvas.Brush.Style := bsSolid;
-  imgMain.Canvas.Rectangle(0,0,imgMain.Width,imgMain.Height);
+  imgMain.Canvas.Rectangle(0, 0, imgMain.Width, imgMain.Height);
 
-  SetLength(Polygon,0);
+  SetLength(Polygon, 0);
   Surface := GetSurface;
 
   // Display the surface
-
-  For I := 0 To High(Surface.P) Do
-  Begin
+  for I := 0 to High(Surface.P) do
+  begin
     Polygon := GetPolygon(Surface.P[I]);
     Col := GetColor(PAT_Normal(Surface.P[I]));
-    DrawEnclosedFigure(imgMain.Canvas,Polygon,GetOutlineColor(Col),Col,True);
-    SetLength(Polygon,0);
-  End; // For I
-  SetLength(Surface.P,0);
-End; // TfrmMakeFrom3D.PaintModel
+    DrawEnclosedFigure(imgMain.Canvas, Polygon, GetOutlineColor(Col), Col, True);
+    SetLength(Polygon, 0);
+  end;
+  SetLength(Surface.P, 0);
+end;
 
 Procedure TfrmMakeFrom3D.ExportSurface;
 Var

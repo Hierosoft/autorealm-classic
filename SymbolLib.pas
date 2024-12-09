@@ -20,7 +20,7 @@ unit SymbolLib;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ExtCtrls, ComCtrls, StdCtrls, SymbolFile, TextTool;
 
 type
@@ -84,7 +84,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 uses Main,MapObject,Primitives,NewGroup,DefineNewSymbol,SettingsDialog,Buttons,LocalizedStrings;
 
@@ -194,7 +194,7 @@ var IconList:TListView;
 
 begin
   If Grp = Nil Then Exit;
-   
+
   Screen.Cursor := crHourglass;
 
   IconList  := MainForm.SymbolIconList;

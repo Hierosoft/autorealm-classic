@@ -20,7 +20,7 @@ unit AlignDlg;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls;
 
 type
@@ -42,6 +42,6 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 end.

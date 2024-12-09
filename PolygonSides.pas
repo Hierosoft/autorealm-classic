@@ -20,7 +20,7 @@ unit PolygonSides;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Spin, PoliteSpinEdit;
 
 type
@@ -40,6 +40,6 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 end.

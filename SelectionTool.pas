@@ -19,7 +19,7 @@ unit SelectionTool;
 
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, ToolObject,
+uses SysUtils, Messages, Classes, Graphics, Controls, Forms, ToolObject,
      DrawLines, MapObject, Primitives, GraphGrid, Geometry, Math, CustomHint;
 
 Const SelBorder = 3;

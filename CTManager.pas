@@ -3,8 +3,8 @@ unit CTManager;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Buttons, ColorButton, Grids, Primitives;
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Buttons, Grids, Primitives;
 
 type
   TCTColorRef = Class
@@ -86,7 +86,7 @@ type
     procedure ColorButton2Change(Sender: TObject);
     procedure btnRemoveTranslationClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormClose(Sender: TObject; var FormCloseAction: TCloseAction);
     procedure dgSelectionColorsClick(Sender: TObject);
   private
     { Private declarations }
@@ -529,49 +529,55 @@ Begin
 End; // TfrmCTManager.ClearCTProfiles
 
 procedure TfrmCTManager.cbProfilesChange(Sender: TObject);
-Var
-  B : Boolean;
-  I : Integer;
-
+var
+  B: Boolean;
+  I: Integer;
 begin
-  If Modified Then
-  Begin
-    B := (Application.MessageBox('You have changed this profile!'#13#10'Discard changes?',
-                                 'Warning: changes will be lost',
-                                 MB_YESNO) = IDYES);
-  End
-  Else B := True;
-  If B Then
-  Begin
+  if Modified then
+  begin
+    B := (MessageDlg('Warning',
+                     'You have changed this profile!'#13#10'Discard changes?',
+                     mtWarning, [mbYes, mbNo], 0) = mrYes);
+  end
+  else
+    B := True;
+
+  if B then
+  begin
     I := cbProfiles.ItemIndex;
-    If (I >= 0) And (I < CTProfiles.Count) Then
-     WorkProfile.CopyFrom(CTProfiles.Objects[I] As TCTProfile);
+    if (I >= 0) and (I < CTProfiles.Count) then
+      WorkProfile.CopyFrom(TCTProfile(CTProfiles.Objects[I]));
+
     btnRename.Enabled := True;
     btnDelete.Enabled := True;
     SetupProfileColorList;
     SetModified(False);
-  End;
+  end;
 end;
 
+
 procedure TfrmCTManager.btnNewClick(Sender: TObject);
-Var B: Boolean;
+var
+  B: Boolean;
 begin
-  If Modified Then
-  Begin
-    B := (Application.MessageBox('You have changed this profile!'#13#10'Discard changes?',
-                                 'Warning: changes will be lost',
-                                 MB_YESNO) = IDYES);
-  End
-  Else B := True;
-  If B Then
-  Begin
+  if Modified then
+  begin
+    B := (MessageDlg('Warning',
+                     'You have changed this profile!'#13#10'Discard changes?',
+                     mtWarning, [mbYes, mbNo], 0) = mrYes);
+  end
+  else
+    B := True;
+
+  if B then
+  begin
     WorkProfile.Clear;
     SetModified(False);
     cbProfiles.ItemIndex := -1;
-    btnRename.Enabled    := False;
-    btnDelete.Enabled    := False;
+    btnRename.Enabled := False;
+    btnDelete.Enabled := False;
     SetupProfileColorList;
-  End;
+  end;
 end;
 
 procedure TfrmCTManager.btnSaveClick(Sender: TObject);
@@ -763,36 +769,33 @@ end;
 
 procedure TfrmCTManager.btnRemoveTranslationClick(Sender: TObject);
 begin
-  If (sgProfile.Col > 0) And (sgProfile.Col <= WorkProfile.NumColors) Then
-  Begin
-    If Application.MessageBox('Remove this color association?',
-                              'Warning: this cannot be undone!',
-                              MB_YESNO) = IDYES Then
-    Begin
+  if (sgProfile.Col > 0) and (sgProfile.Col <= WorkProfile.NumColors) then
+  begin
+    if MessageDlg('Warning',
+                  'Remove this color association?'#13#10'This cannot be undone!',
+                  mtWarning, [mbYes, mbNo], 0) = mrYes then
+    begin
       WorkProfile.Delete(sgProfile.Col - 1);
       SetModified(True);
       SetupProfileColorList;
-    End;
-  End;
+    end;
+  end;
 end;
 
 procedure TfrmCTManager.btnDeleteClick(Sender: TObject);
-Var
-  I  : Integer;
-  St : String;
-  P  : PChar;
-
+var
+  I: Integer;
+  St: String;
 begin
-  If (WorkProfile.FileName <> '') And
-     (cbProfiles.ItemIndex >= 0) And
-     (cbProfiles.ItemIndex < CTProfiles.Count) Then
-  Begin
-    St := 'Permanently DELETE profile ' + WorkProfile.Name + '?';
-    P  := StrAlloc(Length(St) + 1);
-    StrPCopy(P,St);
-    If Application.MessageBox(P,'Warning: this cannot be undone!',MB_YESNO) = IDYES Then
-    Begin
-      DeleteFile(WorkProfile.FileName);
+  if (WorkProfile.FileName <> '') and
+     (cbProfiles.ItemIndex >= 0) and
+     (cbProfiles.ItemIndex < CTProfiles.Count) then
+  begin
+    St := 'Permanently DELETE profile "' + WorkProfile.Name + '"?'#13#10'This cannot be undone!';
+    if MessageDlg('Warning', St, mtWarning, [mbYes, mbNo], 0) = mrYes then
+    begin
+      if FileExists(WorkProfile.FileName) then
+        DeleteFile(WorkProfile.FileName);
       WorkProfile.Clear;
       I := cbProfiles.ItemIndex;
       cbProfiles.ItemIndex := -1;
@@ -803,9 +806,8 @@ begin
       btnRename.Enabled := False;
       btnDelete.Enabled := False;
       SetupProfileColorList;
-    End;
-    StrDispose(P);
-  End;
+    end;
+  end;
 end;
 
 Procedure TfrmCTManager.SetModified(B: Boolean);
@@ -903,7 +905,7 @@ Begin
 End; // TfrmCTManager.InverseTranslate
 
 procedure TfrmCTManager.FormClose(Sender: TObject;
-  var Action: TCloseAction);
+  var FormCloseAction: TCloseAction);
 begin
   lbSelectionItems.Clear;
 end;

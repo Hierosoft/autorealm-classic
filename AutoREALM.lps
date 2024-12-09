@@ -7,27 +7,563 @@
       <Unit>
         <Filename Value="AutoREALM.lpr"/>
         <IsPartOfProject Value="True"/>
+        <TopLine Value="6"/>
+        <CursorPos X="30" Y="22"/>
+        <UsageCount Value="216"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="imagechecklistbox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ImageCheckListBox"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="38" Y="20"/>
+        <UsageCount Value="212"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="persistentform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PersistentForm"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="206"/>
       </Unit>
       <Unit>
-        <Filename Value="MAIN.dfm"/>
+        <Filename Value="politespinedit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PoliteSpinEdit"/>
+        <EditorIndex Value="18"/>
+        <CursorPos X="38" Y="13"/>
+        <UsageCount Value="206"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="politecombobox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PoliteComboBox"/>
+        <EditorIndex Value="46"/>
+        <CursorPos X="20"/>
+        <UsageCount Value="205"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="politeedit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PoliteEdit"/>
+        <EditorIndex Value="45"/>
+        <CursorPos Y="7"/>
+        <UsageCount Value="205"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="DrawLines.pas"/>
+        <EditorIndex Value="47"/>
+        <TopLine Value="23"/>
+        <CursorPos X="12" Y="23"/>
+        <UsageCount Value="107"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Geometry.pas"/>
+        <EditorIndex Value="25"/>
+        <TopLine Value="3"/>
+        <CursorPos X="21" Y="23"/>
+        <UsageCount Value="107"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="MAIN.PAS"/>
+        <UnitName Value="Main"/>
         <IsVisibleTab Value="True"/>
+        <EditorIndex Value="26"/>
+        <TopLine Value="346"/>
+        <CursorPos X="114" Y="346"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Logging.pas"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="15"/>
+        <CursorPos X="6" Y="27"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="MapObject.pas"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="299"/>
+        <CursorPos X="14" Y="311"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Primitives.pas"/>
+        <EditorIndex Value="22"/>
+        <TopLine Value="53"/>
+        <CursorPos X="44" Y="77"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="MatrixMath.pas"/>
+        <EditorIndex Value="23"/>
+        <TopLine Value="65"/>
+        <CursorPos X="3" Y="76"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="GraphGrid.pas"/>
+        <EditorIndex Value="24"/>
+        <TopLine Value="10"/>
+        <CursorPos X="9" Y="23"/>
+        <UsageCount Value="106"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/lib/lazarus/3.0/lcl/include/customlistview.inc"/>
+        <EditorIndex Value="21"/>
+        <TopLine Value="390"/>
+        <CursorPos X="27" Y="397"/>
+        <UsageCount Value="104"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/lib/lazarus/3.0/lcl/comctrls.pp"/>
+        <UnitName Value="ComCtrls"/>
+        <EditorIndex Value="20"/>
+        <TopLine Value="1317"/>
+        <CursorPos X="18" Y="1320"/>
+        <UsageCount Value="103"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="TextTool.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="14"/>
+        <CursorPos X="14" Y="22"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ToolObject.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="14"/>
+        <CursorPos X="14" Y="22"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SelectFont.pas"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="18"/>
+        <CursorPos X="30" Y="26"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="TextSpecialties.pas"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="14"/>
+        <CursorPos X="35" Y="22"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SymbolFile.pas"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="42"/>
+        <CursorPos X="26" Y="53"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SettingsDialog.pas"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="17"/>
+        <TopLine Value="19"/>
+        <CursorPos X="17" Y="33"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="persistentformunit.pas"/>
+        <UnitName Value="PersistentForm"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
+        <CursorPos X="28" Y="9"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/lib/lazarus/3.0/lcl/spin.pp"/>
+        <UnitName Value="Spin"/>
+        <EditorIndex Value="19"/>
+        <TopLine Value="148"/>
+        <CursorPos X="12" Y="169"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SymbolLib.pas"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="10"/>
+        <CursorPos X="3" Y="23"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="LineTool.pas"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="9"/>
+        <CursorPos X="14" Y="22"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="PolygonSides.pas"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="16"/>
+        <CursorPos X="10" Y="43"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SelectionTool.pas"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="9"/>
+        <CursorPos X="14" Y="22"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CustomHint.pas"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="132"/>
+        <CursorPos X="36" Y="155"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Rotate.pas"/>
+        <EditorIndex Value="14"/>
+        <TopLine Value="17"/>
+        <CursorPos X="10" Y="44"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Scale.pas"/>
+        <EditorIndex Value="15"/>
+        <TopLine Value="35"/>
+        <CursorPos X="10" Y="53"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Flip.pas"/>
+        <EditorIndex Value="16"/>
+        <TopLine Value="17"/>
+        <CursorPos X="10" Y="43"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="DeleteView.pas"/>
+        <EditorIndex Value="42"/>
+        <TopLine Value="38"/>
+        <CursorPos X="10" Y="43"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="AlignDlg.pas"/>
+        <EditorIndex Value="43"/>
+        <TopLine Value="18"/>
+        <CursorPos X="10" Y="45"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SaveView.pas"/>
+        <EditorIndex Value="44"/>
+        <TopLine Value="16"/>
+        <CursorPos X="10" Y="43"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="OrderDlg.pas"/>
+        <EditorIndex Value="41"/>
+        <TopLine Value="11"/>
+        <CursorPos X="3" Y="23"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ttbdock.pas"/>
+        <UnitName Value="TTBDock"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="117" Y="2"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="patternbutton.pas"/>
+        <UnitName Value="PatternButton"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="6"/>
+        <CursorPos X="15" Y="18"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ReplacementOverlay.pas"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="28"/>
+        <TopLine Value="16"/>
+        <CursorPos X="10" Y="43"/>
+        <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Splash.pas"/>
+        <EditorIndex Value="29"/>
+        <TopLine Value="20"/>
+        <CursorPos X="10" Y="41"/>
+        <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="About.pas"/>
+        <EditorIndex Value="30"/>
+        <TopLine Value="17"/>
+        <CursorPos X="10" Y="43"/>
+        <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Skew.pas"/>
+        <EditorIndex Value="31"/>
+        <TopLine Value="21"/>
+        <CursorPos X="10" Y="47"/>
+        <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="MapSettings.pas"/>
+        <EditorIndex Value="32"/>
+        <TopLine Value="129"/>
+        <CursorPos X="65" Y="140"/>
+        <UsageCount Value="84"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CustomPrint.pas"/>
+        <EditorIndex Value="33"/>
+        <TopLine Value="476"/>
+        <CursorPos X="4" Y="487"/>
+        <UsageCount Value="59"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="movesel.pas"/>
+        <EditorIndex Value="34"/>
+        <TopLine Value="12"/>
+        <CursorPos Y="26"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CreateArray.pas"/>
+        <EditorIndex Value="35"/>
+        <TopLine Value="10"/>
+        <CursorPos X="3" Y="23"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="DefineNewSymbol.pas"/>
+        <EditorIndex Value="36"/>
+        <CursorPos X="3" Y="6"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="NewGroup.pas"/>
+        <EditorIndex Value="37"/>
+        <CursorPos X="3" Y="6"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="BitmapProperties.pas"/>
+        <EditorIndex Value="38"/>
+        <CursorPos X="3" Y="6"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="CTManager.pas"/>
+        <EditorIndex Value="39"/>
+        <TopLine Value="782"/>
+        <CursorPos X="5" Y="811"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="frmMakeFrom3DUnit.pas"/>
+        <EditorIndex Value="40"/>
+        <TopLine Value="1318"/>
+        <CursorPos X="5" Y="1331"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/classes/classesh.inc"/>
+        <EditorIndex Value="27"/>
+        <TopLine Value="100"/>
+        <CursorPos X="8" Y="114"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <General>
-      <ActiveWindowIndexAtStart Value="-1"/>
-    </General>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1298" Column="21" TopLine="1283"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1300" Column="13" TopLine="1285"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1306" Column="6" TopLine="1292"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1308" Column="23" TopLine="1294"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1309" Column="5" TopLine="1295"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1311" Column="20" TopLine="1297"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1312" Column="18" TopLine="1298"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1326" Column="31" TopLine="1312"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="866" Column="21" TopLine="852"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="5" Column="74"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1020" Column="77" TopLine="1005"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1375" TopLine="1283"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1291" Column="19" TopLine="1282"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="9" Column="53"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1026" Column="29" TopLine="1011"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1386" TopLine="1369"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1326" Column="6" TopLine="1312"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1285" Column="31" TopLine="1269"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="858" Column="33" TopLine="839"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1327" Column="6" TopLine="1313"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="869" Column="17" TopLine="857"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1326" Column="6" TopLine="1305"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1383" TopLine="1354"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1344" Column="32" TopLine="1330"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1375" Column="26" TopLine="1361"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1377" Column="13" TopLine="1363"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1396" Column="19" TopLine="1381"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="6" Column="61"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="2622" Column="3" TopLine="2607"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="1396" Column="3" TopLine="1381"/>
+      </Position>
+    </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="CustomPrint.pas"/>
+        <Line Value="140"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>

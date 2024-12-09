@@ -3,7 +3,7 @@ unit BitmapProperties;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, ComCtrls;
 
 type
@@ -58,7 +58,7 @@ implementation
 
 uses Main, MapObject, LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 var viewWidth,viewHeight:integer;
 

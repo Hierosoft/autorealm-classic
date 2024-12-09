@@ -20,7 +20,7 @@ unit DeleteView;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, MapObject;
 
 type
@@ -40,27 +40,29 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TDeleteViewForm.FormShow(Sender: TObject);
-var s:string;
-    index:integer;
+var
+  s: string;
+  index: integer;
 begin
-  if Map.CurrentView.Name='' then
-    s:=LastViewName
+  if Map.CurrentView.Name = '' then
+    s := LastViewName
   else
-    s:=Map.CurrentView.Name;
+    s := Map.CurrentView.Name;
 
-  { This silly exercise is to force the stupid ListBox to
-    get the correct positition.  For some reason, ItemIndex
-    defaults to 0, and it cannot select the first item
-    (since the ItemIndex property code bails out if setting
-    to the same value). }
-  index:=ViewListBox.Items.IndexOf(s);
-  SendMessage(ViewListBox.Handle, LB_SETCARETINDEX, index, 0);
-  SendMessage(ViewListBox.Handle, LB_SETCURSEL,     index, 0);
+  { This is the direct approach to select the item and set the caret in the ListBox }
+  index := ViewListBox.Items.IndexOf(s);
 
-  ActiveControl:=ViewListBox;
+  if index >= 0 then
+  begin
+    ViewListBox.ItemIndex := index;  { Set the selected item }
+    ViewListBox.TopIndex := index;   { Scroll the ListBox so the selected item is visible }
+  end;
+
+  ActiveControl := ViewListBox;
 end;
+
 
 end.

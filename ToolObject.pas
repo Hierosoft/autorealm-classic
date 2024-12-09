@@ -19,7 +19,7 @@ unit ToolObject;
 
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, Geometry;
+uses SysUtils, Messages, Classes, Graphics, Controls, Forms, Geometry;
 
 
 type TToolState = (tsOff, tsStarted);

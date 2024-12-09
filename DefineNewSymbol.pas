@@ -3,11 +3,11 @@ unit DefineNewSymbol;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls;
 
 type
-  TNewSymbol = class(TForm)            
+  TNewSymbol = class(TForm)
     SymbolNameText: TEdit;
     Label1: TLabel;
     Label2: TLabel;
@@ -33,7 +33,7 @@ implementation
 
 uses SymbolLib,SymbolFile,MapObject, Main, LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 var lastGroup:integer;
     lastComments:string;

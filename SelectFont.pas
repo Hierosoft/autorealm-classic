@@ -23,7 +23,7 @@ interface
 
 uses
   LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Buttons, ComCtrls, ColorButton, ExtCtrls, Menus, Primitives;
+  StdCtrls, Buttons, ComCtrls, ExtCtrls, Menus, Primitives;
 
 type
   TChooseFont = class(TForm)

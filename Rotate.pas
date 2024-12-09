@@ -20,14 +20,14 @@ unit Rotate;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Spin, PoliteSpinEdit, HeadingControl, ExtCtrls;
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Spin, PoliteSpinEdit, ExtCtrls, ComCtrls;
 
 type
   TRotateForm = class(TForm)
     OKBtn: TButton;
     CancelBtn: TButton;
-    HeadingControl: THeadingControl;
+    HeadingControl: THeaderControl;  // FIXME: Why was this THeadingControl??
     Label1: TLabel;
     Panel1: TPanel;
   private
@@ -41,6 +41,6 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 end.

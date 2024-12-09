@@ -20,7 +20,7 @@ unit MapSettings;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, PoliteEdit, ExtCtrls, PoliteComboBox, ComCtrls, Spin,
   Math, StrUtils;
 
@@ -62,7 +62,7 @@ type
     GridOnTop: TCheckBox;
     lblGridLevel: TLabel;
     txtCurrGridPos: TEdit;
-    procedure SetGraphScale(which:integer; text:string; multiplier:double);
+    procedure SetGraphScale(which:integer; graphScaleText:string; multiplier:double);
     procedure UnitComboBoxChange(Sender: TObject);
     procedure AEditChange(Sender: TObject);
     procedure BEditChange(Sender: TObject);
@@ -70,7 +70,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure GridOnTopClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormClose(Sender: TObject; var formCloseAction: TCloseAction);
     procedure CommentsChange(Sender: TObject);
     function  StrToCardinal(s: String): Cardinal;
   private
@@ -86,25 +86,25 @@ implementation
 
 uses Main,GraphGrid,MapObject,Primitives,LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
-procedure TMapSettingsDialog.SetGraphScale(which:integer; text:string; multiplier:double);
+procedure TMapSettingsDialog.SetGraphScale(which:integer; graphScaleText:string; multiplier:double);
 var f:double;
     i:integer;
     view:ViewPoint;
 begin
   try
-    if (text<>'') then begin
+    if (graphScaleText<>'') then begin
       { If they change the map scale, all the views to reflect the
         new sizing } 
       for i:=0 to Map.GetViewPoints-1 do begin
         View:=Map.GetViewPoint(i);
         View.Grid.SetGraphUnits(-1,0);
-        View.Grid.GraphScale := StrToFloat(text)/multiplier;
+        View.Grid.GraphScale := StrToFloat(graphScaleText)/multiplier;
         View.Grid.SetGraphUnits(UnitComboBox.ItemIndex,MainForm.GridSizeBar.Position*UnitsPerGridTick);
         end;
       Map.CurrentView.Grid.SetGraphUnits(-1,0);
-      Map.CurrentView.Grid.GraphScale := StrToFloat(text)/multiplier;
+      Map.CurrentView.Grid.GraphScale := StrToFloat(graphScaleText)/multiplier;
       Map.CurrentView.Grid.SetGraphUnits(UnitComboBox.ItemIndex,MainForm.GridSizeBar.Position*UnitsPerGridTick);
       end;
 
@@ -137,10 +137,11 @@ begin
             if (which<>0) then AEdit.Text:=FloatToStrF(f,              ffGeneral, 8, 2);
           end;
         end;
-
+      { TODO: It won't accept (on Linux) the single arg handlers:
       AEdit.OnChange:=AEditChange;
       BEdit.OnChange:=BEditChange;
       CEdit.OnChange:=CEditChange;
+      }
       end;
 
   except
@@ -308,7 +309,7 @@ begin
   Map.SetModified(modSettings);
 end;
 
-procedure TMapSettingsDialog.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TMapSettingsDialog.FormClose(Sender: TObject; var formCloseAction: TCloseAction);
 var
   new_grid_pos: Cardinal;
 begin

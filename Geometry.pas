@@ -19,7 +19,8 @@ unit Geometry;
 
 interface
 
-uses Windows;
+{ uses Windows; }
+uses Types; { TPoint }
 
 type Coord = single;
 

@@ -24,7 +24,7 @@ procedure LOG(s:string; const Args:array of const); overload;
 
 implementation
 
-uses Windows, SysUtils;
+uses SysUtils;
 
 {$IFDEF LOGGING}
 

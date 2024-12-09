@@ -69,13 +69,16 @@ procedure MultiplyPointByMatrix(var x,y:Coord; Mat:Matrix);
   matrix, the last column is 0, 0, 1}
 var x1,y1:Coord;
 begin
-  try
-    x1 := x*Mat[1,1] + y*Mat[2,1] + Mat[3,1];
-    y1 := x*Mat[1,2] + y*Mat[2,2] + Mat[3,2];
-    x:=x1;
-    y:=y1;
-  except else
-  end;
+  { try }
+  x1 := x*Mat[1,1] + y*Mat[2,1] + Mat[3,1];
+  y1 := x*Mat[1,2] + y*Mat[2,2] + Mat[3,2];
+  x:=x1;
+  y:=y1;
+  { except
+    on E: Exception do
+      // Handle the exception or log it
+      WriteLn('An error occurred: ', E.Message);
+  end; }
 end;
 
 function MatrixMultiply(MatA,MatB:Matrix):Matrix;

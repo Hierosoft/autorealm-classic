@@ -2,7 +2,7 @@ unit CustomHint;
 
 interface
 
-uses Windows, Graphics;
+uses Graphics;
 
   const
     clParchment = $E0FFFF;
@@ -41,57 +41,80 @@ uses Windows, Graphics;
 
 implementation
 
-uses Classes;
 
-procedure GetPopupSize(canvas:TCanvas; sText:string; var w,h:integer);
-var r:TRect;
+uses Classes, SysUtils, StrUtils;
+
+procedure GetPopupSize(canvas: TCanvas; sText: string; var w, h: integer);
+var
+  lines: TStringList;
+  i, lineWidth: integer;
 begin
-  // The DrawText function inflates the given rectangle's width/height.
-  // Start with all zeros so we can just use the bottom right corner.
-  r.Top := 0;
-  r.Left:= 0;
-  r.Bottom:=0;
-  r.Right :=0;
+  // Split the text into lines to handle multi-line text
+  lines := TStringList.Create;
+  try
+    // Normalize line endings to Unix style (#10), then back to Windows style (#13#10)
+    sText := ReplaceStr(sText, #13#10, #10);
+    sText := ReplaceStr(sText, #10, #13#10);
+    lines.Text := sText;
 
-  // Note that we must use DrawText instead of Delphi's conveinent TextWidth/TextHeight
-  // because those functions are not sensitive to multiple lines.
-  DrawText(Canvas.Handle, PChar(sText), -1, r, DT_LEFT + DT_NOPREFIX + DT_CALCRECT);
+    w := 0; // Start with zero width
+    h := 0; // Start with zero height
 
-  // Width = Text + 4 pixels space on either side
-  // Height = Text + 2 pixels spacing on either side
-  w:=r.Right + 8;
-  h:=r.Bottom + 4;
+    // Calculate the width and height of each line
+    for i := 0 to lines.Count - 1 do
+    begin
+      lineWidth := Canvas.TextWidth(lines[i]);
+      if lineWidth > w then
+        w := lineWidth; // Update max width if current line is wider
+      Inc(h, Canvas.TextHeight(lines[i]));
+    end;
+
+    // Add padding: 4 pixels space on either side of the width,
+    // and 2 pixels space on top and bottom of the height
+    w := w + 8;
+    h := h + 4;
+  finally
+    lines.Free;
+  end;
 end;
 
-procedure ShowPopupBox(canvas:TCanvas; x,y:integer; s:string);
-var r:TRect;
-    w,h:integer;
+
+procedure ShowPopupBox(canvas: TCanvas; x, y: integer; s: string);
+var
+  r: TRect;
+  w, h: integer;
 begin
   r.Left := x;
-  r.Top  := y;
+  r.Top := y;
   GetPopupSize(Canvas, s, w, h);
   r.Right := r.Left + w;
   r.Bottom := r.Top + h;
 
-  with Canvas do begin
+  with Canvas do
+  begin
     Brush.Color := clParchment;
     Brush.Style := bsSolid;
-    Pen.Color   := clBlack;
-    Font.Color  := clBlack;
+    Pen.Color := clBlack;
+    Font.Color := clBlack;
     FillRect(r);
+
     Brush.Color := clBlack;
     FrameRect(r);
+
     Brush.Color := clParchment;
+
     // Account for margins inside box: move text down and left a little.
     r.Left := r.Left + 4;
     r.Top := r.Top + 2;
-    // Use DrawText so we can handle multiple lines.
-    DrawText(Canvas.Handle, PChar(s), -1, r, DT_LEFT + DT_NOPREFIX);
-    end;
+
+    // Use TextRect instead of DrawText.
+    TextRect(r, r.Left, r.Top, s);
+  end;
 end;
 
+
 procedure TCustomHint.SetVisible(b:boolean);
-var x,y:integer;
+var hintX,hintY:integer;
     w,h:integer;
 begin
   if (b = HintIsVisible) then exit;
@@ -112,24 +135,24 @@ begin
 
     { Compute our starting location }
     if (mStartX > mEndX) then
-      x := MEndX - w - 8 - mOffsetX
+      hintX := MEndX - w - 8 - mOffsetX
     else
-      x := mEndX + 16 + mOffsetX;       {StartX < EndX }
+      hintX := mEndX + 16 + mOffsetX;       {StartX < EndX }
 
     if (mStartY > mEndY) then
-      y := mEndY - mOffsetY
+      hintY := mEndY - mOffsetY
     else
-      y := MEndY + mOffsetY;
+      hintY := MEndY + mOffsetY;
 
     { Save what's underneath the hint }
-    UnderneathX := x;
-    UnderneathY := y;
+    UnderneathX := hintX;
+    UnderneathY := hintY;
     underneath.Width := w;
     underneath.Height:= h;
-    underneath.Canvas.CopyRect(Rect(0,0,w,h),Canvas,Rect(x,y,x+w,y+h));
+    underneath.Canvas.CopyRect(Rect(0,0,w,h),Canvas,Rect(hintX,hintY,hintX+w,hintY+h));
 
     { Draw it }
-    ShowPopupBox(Canvas,x,y,sText);
+    ShowPopupBox(Canvas,hintX,hintY,sText);
     end;
 
   HintIsVisible:=b;

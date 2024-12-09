@@ -20,7 +20,7 @@ unit CreateArray;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   MapObject, StdCtrls, Spin;
 
 type
@@ -66,7 +66,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TArrayForm.FormShow(Sender: TObject);
 begin

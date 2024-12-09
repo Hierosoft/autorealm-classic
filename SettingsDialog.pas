@@ -20,8 +20,8 @@ unit SettingsDialog;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ExtCtrls, Spin, PersistentForm, ComCtrls, PoliteSpinEdit;
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, PersistentForm, Dialogs,
+  StdCtrls, ExtCtrls, Spin, ComCtrls, PoliteSpinEdit;
 
 type
   TSettings = class(TPersistentForm)
@@ -30,7 +30,7 @@ type
     Drawing: TPageControl;
     General: TTabSheet;
     Label1: TLabel;
-    UndoLevels: TPoliteSpinEdit;
+    UndoLevels: TSpinEdit; // FIXME: formerly TPoliteSpinEdit, but need integer
     VisualOverlays: TCheckBox;
     MakeBackups: TCheckBox;
     DraftPanning: TCheckBox;
@@ -72,7 +72,7 @@ implementation
 
 uses LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 
 procedure TSettings.FormCloseQuery(Sender: TObject; var CanClose: Boolean);

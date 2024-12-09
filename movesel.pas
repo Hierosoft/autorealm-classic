@@ -20,8 +20,9 @@ unit movesel;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Mask;
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls;
+// Mask
 
 type
   TMoveSelection = class(TForm)
@@ -55,7 +56,7 @@ implementation
 
 uses MapObject;
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TMoveSelection.OffsetXChange(Sender: TObject);
 begin

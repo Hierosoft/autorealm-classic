@@ -16,11 +16,11 @@
  | 02111-1307, USA.                                                       |
  +------------------------------------------------------------------------+}
 unit CustomPrint;
-
 interface
 
-uses Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
-  Buttons, ExtCtrls, Spin, Printers, Geometry, Primitives;
+uses SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
+  Buttons, ExtCtrls, Spin, Printers, Printer4Lazarus, Geometry, Primitives,
+  Dialogs, PrintersDlgs;
 
 type
   TCustomPrintDialog = class(TForm)
@@ -52,7 +52,7 @@ type
     PaintBox: TPaintBox;
     Bevel1: TBevel;
     TileGroup: TGroupBox;
-    Tile: TCheckBox;
+    TileCB: TCheckBox;
     HorizontalTiles: TSpinEdit;
     Horizontal: TLabel;
     Vertical: TLabel;
@@ -100,9 +100,11 @@ var
 
 implementation
 
-uses WinSpool, MapObject, Main, LocalizedStrings;
+uses MapObject, Main, LocalizedStrings;
+// PrintersDlgs, Dialogs;
 
-{$R *.DFM}
+// WinSpool
+{$R *.dfm}
 
 var SmallMap:TBitmap;
     MapView:ViewPoint;
@@ -131,47 +133,60 @@ begin
   Result := (Device = ADevice) and ((Port = '') or (Port = APort));
 end;
 
-// These functions return values in printer units
+// These functions return values in printer units.
+//   Before accessing the Printer.Handle, ensure the printer is initialized
+//   by setting PrinterIndex or calling BeginDoc.
+//   Without initialization, Printer.Handle might be invalid.
 
 function GetPageWidth: Integer;
 begin
-  Result := GetDeviceCaps(Printer.Handle, PHYSICALWIDTH)
+  // Returns the total width of the paper in printer units
+  Result := Printer.PageWidth;
 end;
 
 function GetPageHeight: Integer;
 begin
-  Result := GetDeviceCaps(Printer.Handle, PHYSICALHEIGHT)
+  // Returns the total height of the paper in printer units
+  Result := Printer.PageHeight;
 end;
 
 function GetPageOffsetLeft: Integer;
 begin
-  Result := GetDeviceCaps(Printer.Handle, PHYSICALOFFSETX)
+  // Estimate the physical offset from the left edge of the paper
+  Result := Printer.XDPI div 4; // Adjust based on typical offsets, if necessary
 end;
 
 function GetPageOffsetRight: Integer;
 begin
-  Result := GetPageWidth - GetPageOffsetLeft - GetDeviceCaps(Printer.Handle, HORZRES)
+  // Estimate the physical offset from the right edge of the paper
+  Result := GetPageWidth - GetPageOffsetLeft - Printer.PageWidth;
 end;
 
 function GetPageOffsetTop: Integer;
 begin
-  Result := GetDeviceCaps(Printer.Handle, PHYSICALOFFSETY)
+  // Estimate the physical offset from the top edge of the paper
+  Result := Printer.YDPI div 4; // Adjust based on typical offsets, if necessary
 end;
 
 function GetPageOffsetBottom: Integer;
 begin
-  Result := GetPageHeight - GetPageOffsetTop - GetDeviceCaps(Printer.Handle, VERTRES)
+  // Estimate the physical offset from the bottom edge of the paper
+  Result := GetPageHeight - GetPageOffsetTop - Printer.PageHeight;
 end;
 
 function GetPixelsPerInchX: Integer;
 begin
-  Result := GetDeviceCaps(Printer.Handle, LOGPIXELSX)
+  // Returns the horizontal DPI (dots per inch)
+  Result := Printer.XDPI;
 end;
 
 function GetPixelsPerInchY: Integer;
 begin
-  Result := GetDeviceCaps(Printer.Handle, LOGPIXELSY)
+  // Returns the vertical DPI (dots per inch)
+  Result := Printer.YDPI;
 end;
+
+
 
 { ------------------------------------------------------------ }
 
@@ -189,10 +204,10 @@ end;
 
 procedure TCustomPrintDialog.TileClick(Sender: TObject);
 begin
-  Horizontal.Enabled := Tile.Checked;
-  Vertical.Enabled := Tile.Checked;
-  HorizontalTiles.Enabled := Tile.Checked;
-  VerticalTiles.Enabled := Tile.Checked;
+  Horizontal.Enabled := TileCB.Checked;
+  Vertical.Enabled := TileCB.Checked;
+  HorizontalTiles.Enabled := TileCB.Checked;
+  VerticalTiles.Enabled := TileCB.Checked;
 end;
 
 procedure TCustomPrintDialog.FormShow(Sender: TObject);
@@ -261,7 +276,7 @@ begin
 
   if not ShowingArea then begin
     ShowRect:=MapView.CoordToScreenRect(AdjustToPrinterPage(ViewRect));
-    IsTiling:=Tile.Checked;
+    IsTiling:=TileCB.Checked;
     TileWidth:=1;
     TileHeight:=1;
     if IsTiling then begin
@@ -361,74 +376,82 @@ begin
 end;
 
 procedure TCustomPrintDialog.PrinterListChange(Sender: TObject);
-var { Variables for querying the printer info }
-    PrintDev:TPrinterDevice;
-    PrinterHandle:Cardinal;
-    PrinterInfo:PPrinterInfo2;
-    PrinterInfoBuffer:array[0..1024] of char;
-    InfoSize:DWORD;
-    status:string;
-
+var
+  PrintDev: String; // Device name
+  PortName: String; // Port name
+  status: String;
 begin
-  { Figure out all the info that goes in the Printer group box }
-  PrintDev:=TPrinterDevice(Printer.Printers.Objects[PrinterList.ItemIndex]);
+  { Ensure a printer is selected in the list }
+  if PrinterList.ItemIndex < 0 then
+    Exit;
 
-  if PrinterList.ItemIndex=Printer.PrinterIndex then
-    StatusField.Caption:=res_cprint_default
+  { Get the printer's name from the list }
+  PrintDev := Printer.Printers[PrinterList.ItemIndex];
+
+  { Determine if this is the default printer }
+  if PrinterList.ItemIndex = Printer.PrinterIndex then
+    StatusField.Caption := res_cprint_default
   else
-    StatusField.Caption:='';
+    StatusField.Caption := '';
 
-  TypeField.Caption:=PrintDev.Device;
-  WhereField.Caption:=PrintDev.Port;
+  { Lazarus does not provide direct port info, provide a generic fallback }
+  TypeField.Caption := PrintDev; // Typically, the printer name
+  WhereField.Caption := 'Unknown'; // Port information is unavailable in Lazarus
 
-  CommentField.Caption:='';
-  status:=res_cprint_ready;
+  { Add a placeholder comment and status }
+  CommentField.Caption := ''; // No comment available cross-platform
+  status := res_cprint_ready;
 
-  if OpenPrinter(PChar(PrintDev.Device), PrinterHandle, nil) then begin
-    InfoSize:=sizeof(PrinterInfoBuffer);
-    PrinterInfo:=PPrinterInfo2(@PrinterInfoBuffer);
-    if GetPrinter(PrinterHandle,2,@PrinterInfoBuffer,sizeof(PrinterInfoBuffer),@InfoSize) then begin
-      CommentField.Caption:=PrinterInfo.pComment;
-      case PrinterInfo.Status of
-        PRINTER_STATUS_PAUSED            : status:=res_cprint_paused;
-        PRINTER_STATUS_ERROR             : status:=res_cprint_error;
-        PRINTER_STATUS_PAPER_JAM         : status:=res_cprint_paper_jam;
-        PRINTER_STATUS_PAPER_OUT         : status:=res_cprint_out_of_paper;
-        PRINTER_STATUS_PAPER_PROBLEM     : status:=res_cprint_paper_problem;
-        PRINTER_STATUS_OFFLINE           : status:=res_cprint_offline;
-        PRINTER_STATUS_OUTPUT_BIN_FULL   : status:=res_cprint_output_bin_full;
-        PRINTER_STATUS_NOT_AVAILABLE     : status:=res_cprint_not_available;
-        PRINTER_STATUS_TONER_LOW         : status:=res_cprint_toner_low;
-        PRINTER_STATUS_NO_TONER          : status:=res_cprint_no_toner;
-        PRINTER_STATUS_OUT_OF_MEMORY     : status:=res_cprint_out_of_memory;
-        PRINTER_STATUS_DOOR_OPEN         : status:=res_cprint_door_open;
-        PRINTER_STATUS_SERVER_UNKNOWN    : status:=res_cprint_unknown_server;
-        PRINTER_STATUS_POWER_SAVE        : status:=res_cprint_power_save;
-        end;
-      end;
-    ClosePrinter(PrinterHandle);
-    end;
-  StatusField.Caption:=StatusField.Caption+status;
+  { Determine printer status - Cross-platform abstraction }
+  if Printer.Printers.Count > 0 then
+  begin
+    if Printer.PrinterIndex = PrinterList.ItemIndex then
+      status := res_cprint_ready
+    else
+      status := res_cprint_not_available; // Generic fallback status
+  end
+  else
+    status := res_cprint_error; // No printers detected
+
+  StatusField.Caption := StatusField.Caption + status;
 end;
+
 
 procedure TCustomPrintDialog.PropertiesBtnClick(Sender: TObject);
-var PrinterHandle:Cardinal;
-    { Variables for printer switching }
-    deviceName,driverName,portName:array[0..255] of char;
-    Mode:THandle;
+var
+  PrintDialog: TPrintDialog;
+  deviceName: String;
 begin
-  StrPCopy(deviceName, TypeField.Caption);
+  deviceName := TypeField.Caption;
 
-  if OpenPrinter(DeviceName, PrinterHandle, nil) then begin
-    PrinterProperties(Handle, PrinterHandle);
-    ClosePrinter(PrinterHandle);
-    // Need to Get/Set the Printer to cause the Printer object to
-    // pick up the new settings (most importantly, Portrait/Landscape).
-    Printer.GetPrinter(deviceName, driverName, portName, mode);
-    Printer.SetPrinter(deviceName, driverName, portName, 0);
-    Map.Landscape := (Printer.Orientation = poLandscape);
-    end;
+  PrintDialog := TPrintDialog.Create(nil);
+  try
+    {$IFDEF Windows}
+    Printer.SetPrinter(deviceName, '', '', 0); // Ensure correct printer is selected
+    if not PrintDialog.Execute then
+      Exit;
+    {$ELSE}
+    // On non-Windows platforms, limited properties adjustment
+    // TODO: print dialog
+    ShowMessage('Please select printer settings manually. Custom dialogs can be implemented here.');
+    // if not PrintDialog.Execute then
+      Exit;
+    {$ENDIF}
+
+    { Update printer settings, such as orientation }
+    if Printer.Orientation = poLandscape then
+      Map.Landscape := True
+    else
+      Map.Landscape := False;
+  finally
+    {$IFDEF Windows}
+    PrintDialog.Free;
+    // TODO: {$ELSE}
+    {$ENDIF}
+  end;
 end;
+
+
 
 procedure TCustomPrintDialog.RegionClick(Sender: TObject);
 begin
@@ -449,24 +472,30 @@ begin
 end;
 
 procedure TCustomPrintDialog.OKBtnClick(Sender: TObject);
-var { Variables for printer switching }
-    deviceName,driverName,portName:array[0..255] of char;
-    Mode:THandle;
+var
+  PrinterDevice: string;
 begin
-  { Switch the printer that Delphi uses }
-  if PrinterList.ItemIndex<>Printer.PrinterIndex then begin
-    Printer.PrinterIndex:=PrinterList.ItemIndex;
-    Printer.GetPrinter(deviceName, driverName, portName, mode);
-    Printer.SetPrinter(deviceName, driverName, portName, 0);
-    end;
+  { Switch the printer if a different one is selected }
+  if PrinterList.ItemIndex <> Printer.PrinterIndex then
+  begin
+    Printer.PrinterIndex := PrinterList.ItemIndex;
 
-  try
-    Printer.Copies:=NumberCopies.Value;
-  except
-    Printer.Copies:=1;
+    // Get the printer name (cross-platform way)
+    PrinterDevice := Printer.Printers[Printer.PrinterIndex];
+    Printer.Title := PrinterDevice; // Optional: Set the document title
+
+    // Lazarus automatically handles the underlying device name, driver, and port.
   end;
 
-  ViewRect:=AdjustToPrinterPage(ViewRect);
+  try
+    // Set the number of copies, fallback to 1 on error
+    Printer.Copies := NumberCopies.Value;
+  except
+    Printer.Copies := 1;
+  end;
+
+  // Adjust the rectangle to fit the printer's page
+  ViewRect := AdjustToPrinterPage(ViewRect);
 end;
 
 procedure TCustomPrintDialog.PaintBoxMouseDown(Sender: TObject;

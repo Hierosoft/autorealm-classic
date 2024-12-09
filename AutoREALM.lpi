@@ -25,6 +25,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="Printer4Lazarus"/>
+      </Item>
+      <Item>
         <PackageName Value="LCL"/>
       </Item>
     </RequiredPackages>
@@ -32,6 +35,31 @@
       <Unit>
         <Filename Value="AutoREALM.lpr"/>
         <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="imagechecklistbox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ImageCheckListBox"/>
+      </Unit>
+      <Unit>
+        <Filename Value="persistentform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PersistentForm"/>
+      </Unit>
+      <Unit>
+        <Filename Value="politespinedit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PoliteSpinEdit"/>
+      </Unit>
+      <Unit>
+        <Filename Value="politecombobox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PoliteComboBox"/>
+      </Unit>
+      <Unit>
+        <Filename Value="politeedit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PoliteEdit"/>
       </Unit>
     </Units>
   </ProjectOptions>
@@ -45,6 +73,9 @@
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>
