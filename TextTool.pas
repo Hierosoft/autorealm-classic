@@ -19,7 +19,7 @@ unit TextTool;
 
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, ToolObject,
+uses SysUtils, Messages, Classes, Graphics, Controls, Forms, ToolObject,
      DrawLines, MapObject, SelectFont, Geometry, TextSpecialties, SymbolFile,
      MatrixMath, LocalizedStrings;
 

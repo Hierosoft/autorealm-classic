@@ -7,7 +7,6 @@
       <Unit>
         <Filename Value="AutoNameGen.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
@@ -15,30 +14,146 @@
       <Unit>
         <Filename Value="AutoName.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="AutoNameDialog"/>
         <HasResources Value="True"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="3"/>
         <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="AutoNameGenerator.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
         <UsageCount Value="20"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
+      <Unit>
+        <Filename Value="LocalizedStrings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SelectFont.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ChooseFont"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="43" Y="26"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="MAIN.PAS"/>
+        <UnitName Value="Main"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="502"/>
+        <CursorPos X="34" Y="504"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory HistoryIndex="18">
+      <Position>
+        <Filename Value="AutoNameGen.lpr"/>
+      </Position>
+      <Position>
+        <Filename Value="SelectFont.pas"/>
+        <Caret Line="26" Column="43" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="SelectFont.pas"/>
+        <Caret Line="22" Column="69" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="SelectFont.pas"/>
+        <Caret Line="26" Column="43" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="19"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="20" Column="28" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="27" Column="58" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="207" Column="28" TopLine="187"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="209" Column="28" TopLine="189"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="213" Column="31" TopLine="193"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="215" Column="34" TopLine="195"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="217" Column="28" TopLine="197"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="2" Column="4"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="27" Column="58" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="207" Column="28" TopLine="199"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="209" Column="28" TopLine="199"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="213" Column="31" TopLine="199"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="215" Column="34" TopLine="199"/>
+      </Position>
+      <Position>
+        <Filename Value="MAIN.PAS"/>
+        <Caret Line="217" Column="28" TopLine="199"/>
+      </Position>
+    </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
   <SkipCheckLCLInterfaces Value="True"/>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="SelectFont.pas"/>
+        <Line Value="26"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>

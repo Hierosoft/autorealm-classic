@@ -29,9 +29,9 @@ unit SymbolFile;
 interface
 
 uses
-  Windows, Messages, Classes, Graphics, Controls, Forms, Dialogs,
+  Messages, Classes, Graphics, Controls, Forms, Dialogs,
   ExtCtrls, ComCtrls, StdCtrls, MapObject, SettingsDialog, LocalizedStrings,
-  XDOM_2_3;
+  DOM;
 
   // =====================================================================================
 
@@ -94,7 +94,7 @@ type Symbol = class
        property HasBeenLoaded:boolean read fLoaded;
 
        procedure AddSymbol(sym:Symbol);
-       procedure DeleteSymbol(which:Symbol; destroy:boolean=true);
+       procedure DeleteSymbol(which:Symbol; enableDestroy:boolean=true);
        procedure RemoveCachedImage(index:integer);
 
        function  GetSymbol(index:integer):Symbol;
@@ -920,7 +920,7 @@ end;
 //
 // Notes: Deleting an item not in the list does nothing.
 //--------------------------------------------------------------------------
-procedure SymbolGroup.DeleteSymbol(which:Symbol; destroy:boolean);
+procedure SymbolGroup.DeleteSymbol(which:Symbol; enableDestroy:boolean);
 var last,p:Symbol;
 begin
   last:=nil;
@@ -939,7 +939,7 @@ begin
 
     p.Next := nil;        // Not absolutely necessary, but isolate this object in its own chain.
 
-    if destroy then begin
+    if enableDestroy then begin
       p.Free;               // Delete the object.
       end;
 

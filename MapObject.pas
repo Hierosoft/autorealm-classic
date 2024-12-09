@@ -19,9 +19,10 @@ unit MapObject;
 
 interface
 
-uses SysUtils, Windows, Classes, Graphics, DrawLines, Forms, Primitives, Clipbrd,
-  MatrixMath, Geometry, ImageCheckListBox, StdCtrls, LocalizedStrings, jpeg, XDOM_2_3,
-  DIMime;
+uses SysUtils, imagechecklistbox, Classes, Graphics, DrawLines, Forms, Primitives, Clipbrd,
+  MatrixMath, Geometry, StdCtrls, LocalizedStrings, DOM
+  ;
+{ ImageCheckListBox, jpeg, DIMime }
 
 const // AutoREALM pre-release versions (prior to 1.0)
       // Oldest supported file format
@@ -206,7 +207,7 @@ type
     procedure EndAdding;
     procedure Pan(dx, dy: integer);
 
-    function GetMetafile(all: boolean): TMetaFile;
+    { function GetMetafile(all: boolean): TMetaFile; }
     function GetBitmap(all: boolean; viewonly:boolean; width,height:integer): TBitmap;
 
     function FindScalpelPoint(x, y: Coord; var p: DrawPrimitive; var index: integer): boolean;
@@ -289,9 +290,9 @@ type
     Function GetAsDOMElement(D: TDOMDocument; All: Boolean; SaveSet: ChunkSet = []): TDOMElement;
     procedure Write(stream: TStream; all,Full,UseAliasInfo: boolean; saveset: ChunkSet = []);
     procedure Read(stream: TStream; selected,Full,UseAliasInfo: boolean; version:integer=CURRENT_MAP_VERSION; insert:boolean = false);
-    function ReadMetafile(Meta: TMetaFile; selected: boolean): boolean;
+    { function ReadMetafile(Meta: TMetaFile; selected: boolean): boolean; }
     function InsertMap(filename: string): boolean;
-    function InsertMetafile(filename: string): boolean;
+    { function InsertMetafile(filename: string): boolean; }
     function InsertBitmap(filename: string): boolean;
     function InsertJPEG(filename: string): boolean;
 
@@ -5601,7 +5602,7 @@ begin
 
   Result := 1;
 end;
-
+{
 function MapCollection.ReadMetafile(Meta: TMetaFile; selected: boolean): boolean;
 var
   r: TRect;
@@ -5638,7 +5639,9 @@ begin
   // so we will reattempt this paste as a bitmap paste.
   Result := not ((e.TryBitmap) and (tail = last_tail));
 end;
+}
 
+{
 function MapCollection.GetMetafile(all: boolean): TMetaFile;
 var
   MapView: ViewPoint;
@@ -5686,6 +5689,7 @@ begin
 
   MetafileCanvas.Free;
 end;
+}
 
 function MapCollection.GetSelectedObjects(ParentForm: TForm): MapCollection;
 var
@@ -5859,6 +5863,7 @@ begin
   else
     begin
       TryBitmap := true;
+      {
       if Clipboard.HasFormat(CF_METAFILEPICT) then
         begin
           Meta := nil;
@@ -5878,7 +5883,7 @@ begin
             Meta.Destroy;
           end;
         end;
-
+      }
       // If there is only a bitmap on the clipboard, or if there's a metafile that
       // only contains a bitmap, insert it.
       if Clipboard.HasFormat(CF_BITMAP) and TryBitmap then
@@ -5959,7 +5964,7 @@ begin
   if (supresscount <> 0) then dec(supresscount);
   if (supresscount = 0) then Invalidate;
 end;
-
+{
 function MapCollection.InsertMetafile(filename: string): boolean;
 var
   f: TFileStream;
@@ -5998,7 +6003,7 @@ begin
   end;
   DisplaySelectedSize;
 end;
-
+}
 function MapCollection.InsertBitmap(filename: string): boolean;
 var
   f: TFileStream;

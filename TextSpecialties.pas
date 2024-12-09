@@ -19,7 +19,7 @@ unit TextSpecialties;
 
 interface
 
-uses Geometry,Windows,Classes,Graphics,SysUtils;
+uses Geometry, Classes, Graphics, SysUtils;
 
 procedure CenterText(canvas:TCanvas; x,y:integer; text:string);
 procedure XorDrawText(canvas:TCanvas; x,y:integer; text:string; format:integer; backgroundcolor:TColor);

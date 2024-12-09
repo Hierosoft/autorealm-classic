@@ -20,8 +20,8 @@ unit SettingsDialog;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, ExtCtrls, Spin, PersistentForm, ComCtrls, PoliteSpinEdit;
+  Messages, SysUtils, Classes, Graphics, Controls, Forms, PersistentForm, Dialogs,
+  StdCtrls, ExtCtrls, Spin, ComCtrls, PoliteSpinEdit;
 
 type
   TSettings = class(TPersistentForm)

@@ -19,7 +19,7 @@ unit LineTool;
 
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, ToolObject,
+uses SysUtils, Messages, Classes, Graphics, Controls, Forms, ToolObject,
      DrawLines, MapObject, Dialogs, Math, PolygonSides, Geometry, Primitives;
 
 type TNormalLineToolHandler = class(TToolHandler)

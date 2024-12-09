@@ -20,7 +20,7 @@ unit ReplacementOverlay;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls;
 
 type
@@ -40,6 +40,6 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 end.
