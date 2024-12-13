@@ -124,7 +124,7 @@ Group3Name=SymbolFont
 Group3Dir=<FONTDIR>
 Group3Update=2
 Group3TargetOS=-1
-Group3File1=c:\Proj\AutoREALM\Autorsym.ttf
+Group3File1=c:\Proj\AutoREALM\AUTORSYM.TTF
 Group4Size=843019
 Group4Files=15
 Group4Name=Example Files
@@ -330,7 +330,7 @@ Command=
 
 [Install Fonts]
 Name1=AutoREALMSymbols (TrueType)
-File1=c:\Proj\AutoREALM\Autorsym.ttf
+File1=c:\Proj\AutoREALM\AUTORSYM.TTF
 Name2=AutoREALM Phoenician (TrueType)
 File2=C:\Proj\AutoREALM\Fonts\PHOENICI.TTF
 Name3=AutoREALM Hieroglyphics (TrueType)
