@@ -32,7 +32,7 @@ uses
   AlignDlg in 'AlignDlg.pas' {AlignDialog},
   CreateArray in 'CreateArray.pas' {ArrayForm},
   SaveView in 'SaveView.pas' {SaveViewForm},
-  Main in 'MAIN.PAS' {MainForm},
+  Main in 'MAIN.pas' {MainForm},
   AutoName in 'AutoName.pas' {AutoNameDialog},
   AutoNameGenerator in 'AutoNameGenerator.pas',
   SymbolLib in 'SymbolLib.pas' {SymbolLibraryForm},
