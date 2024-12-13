@@ -1,9 +1,11 @@
 unit DefineNewSymbol;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls;
 
 type
@@ -31,9 +33,9 @@ var
 
 implementation
 
-uses SymbolLib,SymbolFile,MapObject, Main, LocalizedStrings;
+uses SymbolLib,SymbolFile,MapObject, MAIN, LocalizedStrings;
 
-{$R *.dfm}
+{$R *.lfm}
 
 var lastGroup:integer;
     lastComments:string;

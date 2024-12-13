@@ -1,5 +1,7 @@
 unit Logging;
 
+{$MODE Delphi}
+
 interface
 
 //
@@ -24,7 +26,7 @@ procedure LOG(s:string; const Args:array of const); overload;
 
 implementation
 
-uses Windows, SysUtils;
+uses LCLIntf, LCLType, LMessages, SysUtils;
 
 {$IFDEF LOGGING}
 

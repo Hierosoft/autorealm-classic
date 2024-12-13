@@ -1,0 +1,274 @@
+object BitmapPropertyDlg: TBitmapPropertyDlg
+  Left = 284
+  Height = 550
+  Top = 146
+  Width = 734
+  Caption = 'Bitmap Properties'
+  ClientHeight = 550
+  ClientWidth = 734
+  Color = clBtnFace
+  DesignTimePPI = 120
+  Font.Color = clWindowText
+  Font.Height = -14
+  Font.Name = 'MS Sans Serif'
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '3.6.0.0'
+  object PaintBox: TPaintBox
+    Left = 290
+    Height = 411
+    Top = 30
+    Width = 411
+    OnPaint = PaintBoxPaint
+  end
+  object lblBitmapSize: TLabel
+    Left = 290
+    Height = 16
+    Top = 10
+    Width = 341
+    Alignment = taCenter
+    AutoSize = False
+  end
+  object cmdOK: TButton
+    Left = 380
+    Height = 31
+    Top = 460
+    Width = 101
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 0
+    OnClick = cmdOKClick
+  end
+  object Button2: TButton
+    Left = 510
+    Height = 31
+    Top = 460
+    Width = 101
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 1
+  end
+  object GroupBox1: TGroupBox
+    Left = 10
+    Height = 211
+    Top = 10
+    Width = 251
+    Caption = ' Bitmap Size '
+    ClientHeight = 190
+    ClientWidth = 247
+    ParentBackground = False
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 168
+      Height = 16
+      Top = 154
+      Width = 6
+      Caption = 'x'
+    end
+    object lblWindowSize: TLabel
+      Left = 130
+      Height = 1
+      Top = 180
+      Width = 1
+    end
+    object radio320x200: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 30
+      Width = 75
+      Caption = '320 x 200'
+      TabOrder = 0
+      OnClick = UpdatePreview
+    end
+    object radio640x480: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 60
+      Width = 75
+      Caption = '640 x 480'
+      TabOrder = 1
+      OnClick = UpdatePreview
+    end
+    object radio800x600: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 90
+      Width = 75
+      Caption = '800 x 600'
+      TabOrder = 2
+      OnClick = UpdatePreview
+    end
+    object radio1024x768: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 120
+      Width = 82
+      Caption = '1024 x 768'
+      TabOrder = 3
+      OnClick = UpdatePreview
+    end
+    object radioCustom: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 150
+      Width = 66
+      Caption = 'Custom'
+      TabOrder = 4
+      OnClick = UpdatePreview
+    end
+    object customWidth: TEdit
+      Left = 100
+      Height = 24
+      Top = 150
+      Width = 61
+      TabOrder = 5
+      OnChange = UpdatePreview
+    end
+    object customHeight: TEdit
+      Left = 180
+      Height = 24
+      Top = 150
+      Width = 61
+      TabOrder = 6
+      OnChange = UpdatePreview
+    end
+    object radioWindowSize: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 180
+      Width = 104
+      Caption = 'Window Size: '
+      Checked = True
+      TabOrder = 7
+      TabStop = True
+      OnClick = UpdatePreview
+    end
+    object radio1152x864: TRadioButton
+      Left = 140
+      Height = 20
+      Top = 30
+      Width = 82
+      Caption = '1152 x 864'
+      TabOrder = 8
+      OnClick = UpdatePreview
+    end
+    object radio1280x1024: TRadioButton
+      Left = 140
+      Height = 20
+      Top = 60
+      Width = 89
+      Caption = '1280 x 1024'
+      TabOrder = 9
+      OnClick = UpdatePreview
+    end
+    object radio1600x1200: TRadioButton
+      Left = 140
+      Height = 20
+      Top = 90
+      Width = 89
+      Caption = '1600 x 1200'
+      TabOrder = 10
+      OnClick = UpdatePreview
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 10
+    Height = 101
+    Top = 240
+    Width = 251
+    Caption = ' Scaling '
+    ClientHeight = 80
+    ClientWidth = 247
+    ParentBackground = False
+    TabOrder = 3
+    object AreaView: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 30
+      Width = 137
+      Caption = 'Current Zoom Level'
+      Checked = True
+      TabOrder = 0
+      TabStop = True
+      OnClick = UpdatePreview
+    end
+    object AreaWholeMap: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 60
+      Width = 121
+      Caption = 'Show Entire Map'
+      TabOrder = 1
+      OnClick = UpdatePreview
+    end
+  end
+  object JPEGSettings: TGroupBox
+    Left = 10
+    Height = 151
+    Top = 350
+    Width = 251
+    Caption = 'JPEG Settings'
+    ClientHeight = 130
+    ClientWidth = 247
+    ParentBackground = False
+    TabOrder = 4
+    object Label2: TLabel
+      Left = 20
+      Height = 16
+      Top = 20
+      Width = 82
+      Caption = 'Image Quality'
+    end
+    object Label3: TLabel
+      Left = 20
+      Height = 16
+      Top = 40
+      Width = 19
+      Caption = '0%'
+    end
+    object Label4: TLabel
+      Left = 199
+      Height = 16
+      Top = 40
+      Width = 33
+      Alignment = taRightJustify
+      Caption = '100%'
+    end
+    object JPEGQuality: TTrackBar
+      Left = 10
+      Height = 31
+      Hint = 'Sets image quality/compression level'
+      Top = 60
+      Width = 231
+      Frequency = 5
+      Max = 100
+      Min = 1
+      Position = 75
+      TabOrder = 0
+    end
+    object JPEGImageSmoothing: TCheckBox
+      Left = 20
+      Height = 20
+      Hint = 'Edges of uncompress blocks are blurred (useful for photographic images)'
+      Top = 100
+      Width = 126
+      Caption = 'Image Smoothing'
+      Checked = True
+      State = cbChecked
+      TabOrder = 1
+    end
+    object JPEGProgressiveEncoding: TCheckBox
+      Left = 20
+      Height = 20
+      Hint = 'Saves images so they can be displayed incrementally'
+      Top = 120
+      Width = 154
+      Caption = 'Progressive Encoding'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+    end
+  end
+end

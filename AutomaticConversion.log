@@ -1,0 +1,91 @@
+AutoREALM.lpi Note: Added defines -dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL in custom options
+ Progress: Found all unit files
+AutoREALM.lpr(1,19) Note: Added MODE Delphi syntax modifier after unit name.
+ : 
+ : *** Converting unit files belonging to project/package ***
+DrawLines.pas(116,6) Note: Fixed character case of unit "Main" to "MAIN".
+DrawLines.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+DrawLines.pas(18,16) Note: Added MODE Delphi syntax modifier after unit name.
+Primitives.pas(761,16) Note: Fixed character case of unit "Main" to "MAIN".
+Primitives.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+Primitives.pas(18,17) Note: Added MODE Delphi syntax modifier after unit name.
+ToolObject.pas(61,6) Note: Fixed character case of unit "Main" to "MAIN".
+ToolObject.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+ToolObject.pas(18,17) Note: Added MODE Delphi syntax modifier after unit name.
+SelectionTool.pas Note: Changed encoding from cp1252 to UTF-8
+SelectionTool.pas(138,6) Note: Fixed character case of unit "Main" to "MAIN".
+SelectionTool.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+SelectionTool.pas(18,20) Note: Added MODE Delphi syntax modifier after unit name.
+LineTool.pas(259,6) Note: Fixed character case of unit "Main" to "MAIN".
+LineTool.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+LineTool.pas(18,15) Note: Added MODE Delphi syntax modifier after unit name.
+MapObject.pas(358,6) Note: Fixed character case of unit "Main" to "MAIN".
+MapObject.pas Note: Removed unit "jpeg" from uses section.
+MapObject.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+MapObject.pas(18,16) Note: Added MODE Delphi syntax modifier after unit name.
+ReplacementOverlay.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+ReplacementOverlay.pas(18,25) Note: Added MODE Delphi syntax modifier after unit name.
+TextTool.pas(121,6) Note: Fixed character case of unit "Main" to "MAIN".
+TextTool.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+TextTool.pas(18,15) Note: Added MODE Delphi syntax modifier after unit name.
+Splash.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+Splash.pas(18,13) Note: Added MODE Delphi syntax modifier after unit name.
+GraphGrid.pas Note: Changed encoding from cp1252 to UTF-8
+GraphGrid.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+GraphGrid.pas(18,16) Note: Added MODE Delphi syntax modifier after unit name.
+MatrixMath.pas(18,17) Note: Added MODE Delphi syntax modifier after unit name.
+About.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+About.pas(18,12) Note: Added MODE Delphi syntax modifier after unit name.
+Flip.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+Flip.pas(18,11) Note: Added MODE Delphi syntax modifier after unit name.
+TextSpecialties.pas(32,11) Note: Fixed character case of unit "Main" to "MAIN".
+TextSpecialties.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+TextSpecialties.pas(18,22) Note: Added MODE Delphi syntax modifier after unit name.
+Geometry.pas(96,39) Note: Fixed character case of unit "Main" to "MAIN".
+Geometry.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+Geometry.pas(18,15) Note: Added MODE Delphi syntax modifier after unit name.
+ChartGrid.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+ChartGrid.pas(18,16) Note: Added MODE Delphi syntax modifier after unit name.
+Snap.pas(54,6) Note: Fixed character case of unit "Main" to "MAIN".
+Snap.pas(18,11) Note: Added MODE Delphi syntax modifier after unit name.
+DeleteView.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+DeleteView.pas(18,17) Note: Added MODE Delphi syntax modifier after unit name.
+CustomPrint.pas(103,27) Note: Fixed character case of unit "Main" to "MAIN".
+CustomPrint.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+CustomPrint.pas(18,18) Note: Added MODE Delphi syntax modifier after unit name.
+movesel.pas Note: Replaced unit "Mask" with "Masks" in uses section.
+movesel.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+movesel.pas(18,14) Note: Added MODE Delphi syntax modifier after unit name.
+AlignDlg.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+AlignDlg.pas(18,15) Note: Added MODE Delphi syntax modifier after unit name.
+CreateArray.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+CreateArray.pas(18,18) Note: Added MODE Delphi syntax modifier after unit name.
+SaveView.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+SaveView.pas(18,15) Note: Added MODE Delphi syntax modifier after unit name.
+SymbolLib.pas(89,6) Note: Fixed character case of unit "Main" to "MAIN".
+SymbolLib.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+SymbolLib.pas(18,16) Note: Added MODE Delphi syntax modifier after unit name.
+SymbolFile.pas(144,51) Note: Fixed character case of unit "Main" to "MAIN".
+SymbolFile.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+SymbolFile.pas(18,17) Note: Added MODE Delphi syntax modifier after unit name.
+StreamUtil.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+StreamUtil.pas(1,17) Note: Added MODE Delphi syntax modifier after unit name.
+NewGroup.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+NewGroup.pas(1,15) Note: Added MODE Delphi syntax modifier after unit name.
+DefineNewSymbol.pas(34,38) Note: Fixed character case of unit "Main" to "MAIN".
+DefineNewSymbol.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+DefineNewSymbol.pas(1,22) Note: Added MODE Delphi syntax modifier after unit name.
+Logging.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+Logging.pas(1,14) Note: Added MODE Delphi syntax modifier after unit name.
+OrderDlg.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+OrderDlg.pas(18,15) Note: Added MODE Delphi syntax modifier after unit name.
+XMLUnit.pas(1,14) Note: Added MODE Delphi syntax modifier after unit name.
+HyperlinkProp.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+HyperlinkProp.pas(1,20) Note: Added MODE Delphi syntax modifier after unit name.
+CustomHint.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+CustomHint.pas(1,17) Note: Added MODE Delphi syntax modifier after unit name.
+BitmapProperties.pas(59,6) Note: Fixed character case of unit "Main" to "MAIN".
+BitmapProperties.pas Note: Replaced unit "Windows" with "LCLIntf, LCLType, LMessages" in uses section.
+BitmapProperties.pas(1,23) Note: Added MODE Delphi syntax modifier after unit name.
+bezier.pas(1,13) Note: Added MODE Delphi syntax modifier after unit name.
+ Fatal: Conversion Aborted.

@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit LineTool;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, ToolObject,
+uses SysUtils, LCLIntf, LCLType, LMessages, Messages, Classes, Graphics, Controls, Forms, ToolObject,
      DrawLines, MapObject, Dialogs, Math, PolygonSides, Geometry, Primitives;
 
 type TNormalLineToolHandler = class(TToolHandler)
@@ -256,7 +258,7 @@ type TNormalLineToolHandler = class(TToolHandler)
 
 implementation
 
-uses Main,ChartGrid,Snap,SettingsDialog,ColorButton,LocalizedStrings;
+uses MAIN,ChartGrid,Snap,SettingsDialog,ColorButton,LocalizedStrings;
 
 const fqSmooth = 0;
       fqStandard = 1;

@@ -1,4 +1,7 @@
 Unit Bezier;
+
+{$MODE Delphi}
+
 {
   Portions of this file adapted from:
 

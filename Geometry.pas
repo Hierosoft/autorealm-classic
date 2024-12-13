@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit Geometry;
 
+{$MODE Delphi}
+
 interface
 
-uses Windows;
+uses LCLIntf, LCLType, LMessages;
 
 type Coord = single;
 
@@ -93,7 +95,7 @@ Function NearestIntersection(Segments: Array Of CoordPoint; NumSegments: Array O
 
 implementation
 
-uses Math,SysUtils,Classes,           Main;
+uses Math,SysUtils,Classes,           MAIN;
 
 Const ArrayInc = 20;
 

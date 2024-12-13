@@ -17,10 +17,12 @@
  +------------------------------------------------------------------------+}
 unit CreateArray;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   MapObject, StdCtrls, Spin;
 
 type
@@ -66,7 +68,7 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TArrayForm.FormShow(Sender: TObject);
 begin

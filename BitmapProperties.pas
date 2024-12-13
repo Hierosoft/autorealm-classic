@@ -1,9 +1,11 @@
 unit BitmapProperties;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, ComCtrls;
 
 type
@@ -56,9 +58,9 @@ var
 
 implementation
 
-uses Main, MapObject, LocalizedStrings;
+uses MAIN, MapObject, LocalizedStrings;
 
-{$R *.dfm}
+{$R *.lfm}
 
 var viewWidth,viewHeight:integer;
 

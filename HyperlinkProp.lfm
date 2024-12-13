@@ -1,0 +1,99 @@
+object HyperlinkProperties: THyperlinkProperties
+  Left = 484
+  Height = 170
+  Top = 191
+  Width = 415
+  Caption = 'Hyperlink/Popup Properties'
+  ClientHeight = 170
+  ClientWidth = 415
+  Color = clBtnFace
+  DesignTimePPI = 120
+  DragKind = dkDock
+  DragMode = dmAutomatic
+  Font.Color = clWindowText
+  Font.Height = -14
+  Font.Name = 'MS Sans Serif'
+  FormStyle = fsStayOnTop
+  LCLVersion = '3.6.0.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 31
+    Top = 0
+    Width = 415
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 31
+    ClientWidth = 415
+    ParentBackground = False
+    TabOrder = 1
+    object RadioHyperlink: TRadioButton
+      Left = 10
+      Height = 20
+      Top = 6
+      Width = 78
+      Caption = '&Hyperlink'
+      Checked = True
+      TabOrder = 0
+      TabStop = True
+      OnClick = RadioClick
+    end
+    object RadioPopup: TRadioButton
+      Left = 110
+      Height = 20
+      Top = 6
+      Width = 61
+      Caption = '&Popup'
+      TabOrder = 1
+      OnClick = RadioClick
+    end
+    object CheckHidden: TCheckBox
+      Left = 230
+      Height = 20
+      Top = 6
+      Width = 65
+      Caption = 'H&idden'
+      TabOrder = 2
+      OnClick = RadioClick
+    end
+  end
+  object Text: TMemo
+    Tag = 1
+    Left = 0
+    Height = 139
+    Top = 31
+    Width = 415
+    Align = alClient
+    PopupMenu = TextEditPopupMenu
+    TabOrder = 0
+    OnChange = TextChange
+  end
+  object TextEditPopupMenu: TPopupMenu
+    Left = 360
+    Top = 10
+    object CutMenuItem: TMenuItem
+      Caption = 'Cu&t'
+      ShortCut = 16472
+      OnClick = CutMenuItemClick
+    end
+    object CopyMenuItem: TMenuItem
+      Caption = '&Copy'
+      ShortCut = 16451
+      OnClick = CopyMenuItemClick
+    end
+    object PasteMenuItem: TMenuItem
+      Caption = '&Paste'
+      ShortCut = 16470
+      OnClick = PasteMenuItemClick
+    end
+    object DeleteMenuItem: TMenuItem
+      Caption = '&Delete'
+      ShortCut = 46
+      OnClick = DeleteMenuItemClick
+    end
+    object CancelMenuItem: TMenuItem
+      Caption = 'Cancel'
+      ShortCut = 27
+      OnClick = CancelMenuItemClick
+    end
+  end
+end

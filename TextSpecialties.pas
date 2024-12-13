@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit TextSpecialties;
 
+{$MODE Delphi}
+
 interface
 
-uses Geometry,Windows,Classes,Graphics,SysUtils;
+uses Geometry,LCLIntf, LCLType, LMessages,Classes,Graphics,SysUtils;
 
 procedure CenterText(canvas:TCanvas; x,y:integer; text:string);
 procedure XorDrawText(canvas:TCanvas; x,y:integer; text:string; format:integer; backgroundcolor:TColor);
@@ -29,7 +31,7 @@ function ComputeBezierText(Canvas:TCanvas; p1,p2,p3,p4:CoordPoint; text:string; 
 
 implementation
 
-uses Math,Main;
+uses Math,MAIN;
 
 procedure CenterText(canvas:TCanvas; x,y:integer; text:string);
 var w,h:integer;

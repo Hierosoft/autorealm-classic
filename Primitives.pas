@@ -17,10 +17,12 @@
  +------------------------------------------------------------------------+}
 unit Primitives;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Classes, Graphics, Forms, MatrixMath, Math, Geometry,
-     GraphGrid, DrawLines, XDOM_2_3, DIMime,      Dialogs;
+uses SysUtils, LCLIntf, LCLType, LMessages, Classes, Graphics, Forms, MatrixMath, Math, Geometry,
+     GraphGrid, DrawLines, {XDOM_2_3, DIMime,}      Dialogs;
 
 const IconFontName = 'AutoREALMSymbols';
       QuickDraw_Fills=$00000001;
@@ -758,7 +760,7 @@ var OverlayMainColor:array [0..29] of TColor;
 
 implementation
 
-uses MapObject,Main,TextSpecialties,SettingsDialog, Printers, ColorButton, StreamUtil, LocalizedStrings, Bezier;
+uses MapObject,MAIN,TextSpecialties,SettingsDialog, Printers, ColorButton, StreamUtil, LocalizedStrings, Bezier;
 
 var LastHandleX,LastHandleY:Coord;
     FillPalette:HPalette;

@@ -17,10 +17,12 @@
  +------------------------------------------------------------------------+}
 unit ChartGrid;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Spin;
 
 type
@@ -58,7 +60,7 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TChartGridDialog.SetPerimeterPoints(n:integer);
 begin

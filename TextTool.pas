@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit TextTool;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, ToolObject,
+uses SysUtils, LCLIntf, LCLType, LMessages, Messages, Classes, Graphics, Controls, Forms, ToolObject,
      DrawLines, MapObject, SelectFont, Geometry, TextSpecialties, SymbolFile,
      MatrixMath, LocalizedStrings;
 
@@ -118,7 +120,7 @@ var InsertSymbol:Symbol;
 
 implementation
 
-uses Main,Primitives,SettingsDialog,Snap,HyperlinkProp;
+uses MAIN,Primitives,SettingsDialog,Snap,HyperlinkProp;
 
 var iconlastx, iconlasty, iconlastsize, iconlastpos:integer;
 

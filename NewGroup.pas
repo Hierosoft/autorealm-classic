@@ -1,9 +1,11 @@
 unit NewGroup;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls;
 
 type
@@ -25,7 +27,7 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
 const BadCharsInFilename='<>:"/\|';
 

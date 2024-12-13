@@ -1,0 +1,141 @@
+object ChartGridDialog: TChartGridDialog
+  Left = 318
+  Height = 360
+  Top = 217
+  Width = 372
+  Caption = 'Rosette Chart Grid'
+  ClientHeight = 360
+  ClientWidth = 372
+  Color = clBtnFace
+  DesignTimePPI = 120
+  Font.Color = clWindowText
+  Font.Height = -14
+  Font.Name = 'MS Sans Serif'
+  Position = poScreenCenter
+  LCLVersion = '3.6.0.0'
+  object GroupBox1: TGroupBox
+    Left = 20
+    Height = 141
+    Top = 170
+    Width = 321
+    Caption = 'Rosette Appearance'
+    ClientHeight = 120
+    ClientWidth = 317
+    ParentBackground = False
+    TabOrder = 3
+    object SkipLabel: TLabel
+      Left = 20
+      Height = 16
+      Top = 35
+      Width = 140
+      Caption = '&Number vertices to skip'
+    end
+    object ExtendToCrop: TCheckBox
+      Left = 20
+      Height = 20
+      Top = 110
+      Width = 196
+      Caption = '&Extend lines to crop rectangle'
+      Enabled = False
+      TabOrder = 2
+    end
+    object SkipPoints: TSpinEdit
+      Left = 180
+      Height = 24
+      Top = 30
+      Width = 61
+      MaxValue = 7
+      TabOrder = 0
+    end
+    object CropRosette: TCheckBox
+      Left = 20
+      Height = 20
+      Top = 70
+      Width = 189
+      Caption = '&Crop rosette after placement'
+      TabOrder = 1
+      OnClick = CropRosetteClick
+    end
+  end
+  object OK: TButton
+    Left = 240
+    Height = 31
+    Top = 20
+    Width = 94
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 0
+  end
+  object Cancel: TButton
+    Left = 240
+    Height = 31
+    Top = 70
+    Width = 94
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 1
+  end
+  object PerimeterGroup: TGroupBox
+    Left = 20
+    Height = 151
+    Top = 10
+    Width = 181
+    Caption = 'Perimeter Points'
+    ClientHeight = 130
+    ClientWidth = 177
+    ParentBackground = False
+    TabOrder = 2
+    object Perimeter8: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 20
+      Width = 28
+      Caption = '&8'
+      TabOrder = 0
+      OnClick = Perimeter8Click
+    end
+    object Perimeter16: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 50
+      Width = 35
+      Caption = '&16'
+      Checked = True
+      TabOrder = 1
+      TabStop = True
+      OnClick = Perimeter16Click
+    end
+    object Perimeter32: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 80
+      Width = 35
+      Caption = '&32'
+      TabOrder = 2
+      OnClick = Perimeter32Click
+    end
+    object PerimeterOther: TRadioButton
+      Left = 20
+      Height = 20
+      Top = 110
+      Width = 53
+      Caption = '&Other'
+      TabOrder = 3
+      OnClick = PerimeterOtherClick
+    end
+    object Other: TSpinEdit
+      Left = 90
+      Height = 24
+      Top = 106
+      Width = 71
+      MaxValue = 100
+      MinValue = 3
+      OnChange = OtherChange
+      OnKeyDown = OtherKeyDown
+      TabOrder = 4
+      Value = 16
+    end
+  end
+end

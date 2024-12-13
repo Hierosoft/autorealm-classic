@@ -17,6 +17,8 @@
  +------------------------------------------------------------------------+}
 unit Snap;
 
+{$MODE Delphi}
+
 interface
 
 uses Graphics,Primitives, Geometry;
@@ -51,7 +53,7 @@ Procedure ClearAdjust;
 
 implementation
 
-uses Main, MapObject, Math, MapSettings,SelectionTool,GraphGrid;
+uses MAIN, MapObject, Math, MapSettings,SelectionTool,GraphGrid;
 
 // JD 8-11-02
 

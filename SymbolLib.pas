@@ -17,10 +17,12 @@
  +------------------------------------------------------------------------+}
 unit SymbolLib;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ExtCtrls, ComCtrls, StdCtrls, SymbolFile, TextTool;
 
 type
@@ -84,9 +86,9 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
-uses Main,MapObject,Primitives,NewGroup,DefineNewSymbol,SettingsDialog,Buttons,LocalizedStrings;
+uses MAIN,MapObject,Primitives,NewGroup,DefineNewSymbol,SettingsDialog,Buttons,LocalizedStrings;
 
 var SymbolDir:string;
     fUpdateTree:boolean;

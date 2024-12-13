@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit SelectionTool;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, ToolObject,
+uses SysUtils, LCLIntf, LCLType, LMessages, Messages, Classes, Graphics, Controls, Forms, ToolObject,
      DrawLines, MapObject, Primitives, GraphGrid, Geometry, Math, CustomHint;
 
 Const SelBorder = 3;
@@ -135,8 +137,8 @@ type SelectMode=(smMoveTop,smMoveBottom,smMoveLeft,smMoveRight,smMovePoint,smSel
 
 implementation
 
-uses Main, SelectFont, Snap, SettingsDialog, MatrixMath, Dialogs, LocalizedStrings, HyperlinkProp, MapSettings,
-     TB2ExtItems;
+uses MAIN, SelectFont, Snap, SettingsDialog, MatrixMath, Dialogs, LocalizedStrings, HyperlinkProp, MapSettings{,
+     TB2ExtItems};
 
 var DontAskAboutFrozen:boolean;
 
@@ -884,7 +886,7 @@ var cx,cy,cdx,cdy:Coord;
       hint.OffsetY := 0;
       hint.StartX := -32767;
       hint.StartY := -32767;
-      hint.Text := Format('%4.2f°', [angle]);
+      hint.Text := Format('%4.2fÂ°', [angle]);
       hint.Visible := true;
     end;
 

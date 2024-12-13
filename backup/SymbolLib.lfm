@@ -1,0 +1,252 @@
+object SymbolLibraryForm: TSymbolLibraryForm
+  Left = 279
+  Top = 117
+  Width = 514
+  Height = 437
+  Caption = 'Symbol Library'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  ShowHint = True
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Splitter1: TSplitter
+    Left = 233
+    Top = 0
+    Width = 5
+    Height = 378
+    Cursor = crHSplit
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 378
+    Width = 506
+    Height = 32
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 0
+    object btnDefine: TButton
+      Left = 80
+      Top = 4
+      Width = 65
+      Height = 25
+      Hint = 'Define selection on current map as new symbol'
+      Caption = '&Define'
+      TabOrder = 1
+      OnClick = btnDefineClick
+    end
+    object btnRevert: TButton
+      Left = 368
+      Top = 4
+      Width = 65
+      Height = 25
+      Hint = 'Revert ALL symbols to saved versions'
+      Caption = '&Reload All'
+      TabOrder = 4
+      OnClick = btnRevertClick
+    end
+    object btnAddGroup: TButton
+      Left = 224
+      Top = 4
+      Width = 65
+      Height = 25
+      Hint = 'Create a new group'
+      Caption = '&Add Group'
+      TabOrder = 2
+      OnClick = btnAddGroupClick
+    end
+    object btnDelGroup: TButton
+      Left = 296
+      Top = 4
+      Width = 65
+      Height = 25
+      Hint = 'Delete a group'
+      Caption = 'Del &Group'
+      TabOrder = 3
+      OnClick = btnDelGroupClick
+    end
+    object btnSaveAll: TButton
+      Left = 440
+      Top = 4
+      Width = 65
+      Height = 25
+      Hint = 'Save all symbols'
+      Caption = '&Save All'
+      TabOrder = 5
+      OnClick = btnSaveAllClick
+    end
+    object btnInsert: TButton
+      Left = 8
+      Top = 4
+      Width = 65
+      Height = 25
+      Hint = 'Insert selected symbol into map'
+      Caption = '&Insert'
+      Default = True
+      TabOrder = 0
+      OnClick = btnInsertClick
+    end
+    object btnCancel: TButton
+      Left = 152
+      Top = 4
+      Width = 65
+      Height = 25
+      Hint = 'Close symbol library window'
+      Cancel = True
+      Caption = '&Close'
+      TabOrder = 6
+      OnClick = btnCancelClick
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 233
+    Height = 378
+    Align = alLeft
+    BevelOuter = bvNone
+    TabOrder = 1
+    object SymbolTree: TTreeView
+      Left = 0
+      Top = 0
+      Width = 233
+      Height = 378
+      Hint = 'Symbols in library'
+      Align = alClient
+      Indent = 19
+      SortType = stText
+      TabOrder = 0
+      OnChange = SymbolTreeChange
+    end
+  end
+  object Panel3: TPanel
+    Left = 238
+    Top = 0
+    Width = 268
+    Height = 378
+    Align = alClient
+    Color = clWindow
+    TabOrder = 2
+    object LargeSymbol: TPaintBox
+      Left = 1
+      Top = 177
+      Width = 266
+      Height = 200
+      Hint = 'Picture of selected symbol'
+      Align = alClient
+      Color = clWhite
+      ParentColor = False
+      OnPaint = LargeSymbolPaint
+    end
+    object Panel4: TPanel
+      Left = 1
+      Top = 1
+      Width = 266
+      Height = 176
+      Align = alTop
+      BevelInner = bvRaised
+      BevelOuter = bvLowered
+      TabOrder = 0
+      object Label3: TLabel
+        Left = 8
+        Top = 64
+        Width = 49
+        Height = 13
+        Caption = '&Comments'
+      end
+      object Label2: TLabel
+        Left = 8
+        Top = 36
+        Width = 29
+        Height = 13
+        Caption = '&Group'
+      end
+      object Label1: TLabel
+        Left = 8
+        Top = 8
+        Width = 28
+        Height = 13
+        Caption = '&Name'
+        FocusControl = SymbolNameText
+      end
+      object btnEdit: TButton
+        Left = 8
+        Top = 144
+        Width = 81
+        Height = 25
+        Hint = 'Edit symbol attributes: Name, Group, Comments, Favorites'
+        Caption = '&Edit Properties'
+        TabOrder = 0
+        OnClick = btnEditClick
+      end
+      object btnDelete: TButton
+        Left = 192
+        Top = 144
+        Width = 65
+        Height = 25
+        Hint = 'Delete selected symbol'
+        Caption = 'De&lete'
+        TabOrder = 1
+        OnClick = btnDeleteClick
+      end
+      object btnEditPic: TButton
+        Left = 96
+        Top = 144
+        Width = 89
+        Height = 25
+        Hint = 'Edit the symbols drawn representation'
+        Caption = 'Edit &Drawing'
+        TabOrder = 2
+        OnClick = btnEditPicClick
+      end
+      object chkFavorites: TCheckBox
+        Left = 64
+        Top = 124
+        Width = 185
+        Height = 17
+        Caption = 'Sort Symbol &First in List'
+        Enabled = False
+        TabOrder = 3
+      end
+      object GroupNameList: TComboBox
+        Left = 64
+        Top = 32
+        Width = 193
+        Height = 21
+        Hint = 'Group of selected symbol'
+        Style = csDropDownList
+        Enabled = False
+        ItemHeight = 13
+        Sorted = True
+        TabOrder = 4
+      end
+      object SymbolNameText: TEdit
+        Left = 64
+        Top = 8
+        Width = 193
+        Height = 21
+        Hint = 'Name of selected symbol'
+        Enabled = False
+        TabOrder = 5
+      end
+      object SymbolCommentsText: TMemo
+        Left = 64
+        Top = 56
+        Width = 193
+        Height = 65
+        Hint = 'Comments for selected symbol.'
+        Enabled = False
+        ScrollBars = ssBoth
+        TabOrder = 6
+      end
+    end
+  end
+end

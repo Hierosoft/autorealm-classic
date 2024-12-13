@@ -17,10 +17,12 @@
  +------------------------------------------------------------------------+}
 unit AlignDlg;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls;
 
 type
@@ -42,6 +44,6 @@ var
 
 implementation
 
-{$R *.dfm}
+{$R *.lfm}
 
 end.

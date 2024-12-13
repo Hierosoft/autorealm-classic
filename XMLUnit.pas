@@ -1,5 +1,7 @@
 unit XMLUnit;
 
+{$MODE Delphi}
+
 interface
 
 type XML = class

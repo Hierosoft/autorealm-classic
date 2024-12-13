@@ -17,11 +17,13 @@
  +------------------------------------------------------------------------+}
 unit movesel;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  StdCtrls, Mask;
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Masks;
 
 type
   TMoveSelection = class(TForm)
@@ -55,7 +57,7 @@ implementation
 
 uses MapObject;
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure TMoveSelection.OffsetXChange(Sender: TObject);
 begin

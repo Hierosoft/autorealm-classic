@@ -1,0 +1,133 @@
+object ScaleForm: TScaleForm
+  Left = 489
+  Top = 333
+  Width = 334
+  Height = 199
+  Caption = 'Scale Selection'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = True
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object HorizontalLabel: TLabel
+    Left = 136
+    Top = 58
+    Width = 47
+    Height = 13
+    Caption = '&Horizontal'
+    Enabled = False
+    FocusControl = HorizontalScaling
+  end
+  object VerticalLabel: TLabel
+    Left = 144
+    Top = 92
+    Width = 35
+    Height = 13
+    Caption = '&Vertical'
+    Enabled = False
+    FocusControl = VerticalScaling
+  end
+  object UPercent: TLabel
+    Left = 216
+    Top = 20
+    Width = 8
+    Height = 13
+    Caption = '%'
+  end
+  object HPercent: TLabel
+    Left = 288
+    Top = 58
+    Width = 8
+    Height = 13
+    Caption = '%'
+    Enabled = False
+  end
+  object VPercent: TLabel
+    Left = 288
+    Top = 92
+    Width = 8
+    Height = 13
+    Caption = '%'
+    Enabled = False
+  end
+  object UniformRadioBtn: TRadioButton
+    Left = 8
+    Top = 18
+    Width = 113
+    Height = 17
+    Caption = '&Uniform Scaling'
+    Checked = True
+    TabOrder = 0
+    TabStop = True
+    OnClick = UniformRadioBtnClick
+  end
+  object UniformScaling: TPoliteSpinEdit
+    Left = 120
+    Top = 16
+    Width = 89
+    Height = 22
+    Increment = 10
+    MaxValue = 1000
+    MinValue = 1
+    TabOrder = 1
+    Value = 100
+  end
+  object AsymmetricRadioBtn: TRadioButton
+    Left = 8
+    Top = 58
+    Width = 113
+    Height = 17
+    Caption = '&Asymmetric Scaling:'
+    TabOrder = 2
+    OnClick = AsymmetricRadioBtnClick
+  end
+  object HorizontalScaling: TPoliteSpinEdit
+    Left = 192
+    Top = 54
+    Width = 89
+    Height = 22
+    Enabled = False
+    Increment = 10
+    MaxValue = 1000
+    MinValue = 1
+    TabOrder = 3
+    Value = 100
+  end
+  object VerticalScaling: TPoliteSpinEdit
+    Left = 192
+    Top = 88
+    Width = 89
+    Height = 22
+    Enabled = False
+    Increment = 10
+    MaxValue = 1000
+    MinValue = 1
+    TabOrder = 4
+    Value = 100
+  end
+  object OKBtn: TButton
+    Left = 72
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 5
+  end
+  object CancelBtn: TButton
+    Left = 176
+    Top = 136
+    Width = 75
+    Height = 25
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 6
+  end
+end

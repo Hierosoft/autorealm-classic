@@ -17,10 +17,12 @@
  +------------------------------------------------------------------------+}
 unit SelectFont;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  LCLIntf, LCLType, LMessages, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, ComCtrls, ColorButton, ExtCtrls, Menus, Primitives;
 
 type
@@ -73,12 +75,12 @@ procedure AssignTextAttribs(attrib:TextAttrib);
 
 implementation
 
-uses Geometry, Main, MapObject, SettingsDialog, LocalizedStrings;
+uses Geometry, MAIN, MapObject, SettingsDialog, LocalizedStrings;
 
 const FontSizeList:array[1..24] of integer=
 (4,5,6,7,8,9,10,12,14,16,18,20,24,28,30,32,36,40,48,56,64,72,80,96);
 
-{$R *.dfm}
+{$R *.lfm}
 
 procedure AssignTextAttribs(attrib:TextAttrib);
 var SaveChangeProc:TNotifyEvent;

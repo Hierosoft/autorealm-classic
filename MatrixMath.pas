@@ -17,6 +17,8 @@
  +------------------------------------------------------------------------+}
 unit MatrixMath;
 
+{$MODE Delphi}
+
 interface
 
 uses Geometry;

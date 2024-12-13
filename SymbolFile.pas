@@ -17,6 +17,8 @@
  +------------------------------------------------------------------------+}
 unit SymbolFile;
 
+{$MODE Delphi}
+
 {+------------------------------------------------------------------------+
   SymbolFile: Contains the following classes:
     Symbol:            A single symbol in the symbol library
@@ -29,9 +31,9 @@ unit SymbolFile;
 interface
 
 uses
-  Windows, Messages, Classes, Graphics, Controls, Forms, Dialogs,
-  ExtCtrls, ComCtrls, StdCtrls, MapObject, SettingsDialog, LocalizedStrings,
-  XDOM_2_3;
+  LCLIntf, LCLType, LMessages, Messages, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, ComCtrls, StdCtrls, MapObject, SettingsDialog, LocalizedStrings{,
+  XDOM_2_3};
 
   // =====================================================================================
 
@@ -141,7 +143,7 @@ type Symbol = class
 
 implementation
 
-uses Primitives, SysUtils, SymbolLib, StreamUtil, Main, Geometry;
+uses Primitives, SysUtils, SymbolLib, StreamUtil, MAIN, Geometry;
 
 const SymbolFileId  = $53747541;      // AutS (in little-endian format)
       SymbolVersion = $00000001;      // Symbol file version

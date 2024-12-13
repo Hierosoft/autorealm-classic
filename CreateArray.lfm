@@ -1,0 +1,253 @@
+object ArrayForm: TArrayForm
+  Left = 295
+  Height = 521
+  Top = 174
+  Width = 542
+  Caption = 'Create Array'
+  ClientHeight = 521
+  ClientWidth = 542
+  Color = clBtnFace
+  DesignTimePPI = 120
+  Font.Color = clWindowText
+  Font.Height = -14
+  Font.Name = 'MS Sans Serif'
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '3.6.0.0'
+  object GroupBox1: TGroupBox
+    Left = 20
+    Height = 121
+    Top = 20
+    Width = 351
+    Caption = 'Horizontal'
+    ClientHeight = 100
+    ClientWidth = 347
+    ParentBackground = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 30
+      Height = 16
+      Top = 35
+      Width = 34
+      Caption = 'Count'
+    end
+    object Label2: TLabel
+      Left = 20
+      Height = 16
+      Top = 75
+      Width = 50
+      Caption = 'Spacing'
+    end
+    object HorzCount: TSpinEdit
+      Left = 80
+      Height = 24
+      Top = 30
+      Width = 81
+      MaxValue = 9999
+      MinValue = 1
+      TabOrder = 0
+      Value = 1
+    end
+    object HorzSpace: TEdit
+      Left = 80
+      Height = 24
+      Top = 70
+      Width = 91
+      TabOrder = 1
+      Text = '0'
+    end
+    object HorzUnitCombo: TComboBox
+      Left = 180
+      Height = 24
+      Top = 70
+      Width = 151
+      ItemHeight = 16
+      Style = csDropDownList
+      TabOrder = 2
+    end
+    object HorzEvery: TRadioButton
+      Left = 270
+      Height = 20
+      Top = 30
+      Width = 56
+      Caption = 'Every'
+      TabOrder = 3
+    end
+    object HorzBetween: TRadioButton
+      Left = 180
+      Height = 20
+      Top = 30
+      Width = 73
+      Caption = 'Between'
+      Checked = True
+      TabOrder = 4
+      TabStop = True
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 20
+    Height = 121
+    Top = 150
+    Width = 351
+    Caption = 'Vertical'
+    ClientHeight = 100
+    ClientWidth = 347
+    ParentBackground = False
+    TabOrder = 1
+    object Label3: TLabel
+      Left = 30
+      Height = 16
+      Top = 35
+      Width = 34
+      Caption = 'Count'
+    end
+    object Label4: TLabel
+      Left = 20
+      Height = 16
+      Top = 75
+      Width = 50
+      Caption = 'Spacing'
+    end
+    object VertCount: TSpinEdit
+      Left = 80
+      Height = 24
+      Top = 30
+      Width = 81
+      MaxValue = 9999
+      MinValue = 1
+      TabOrder = 0
+      Value = 1
+    end
+    object VertSpace: TEdit
+      Left = 80
+      Height = 24
+      Top = 70
+      Width = 91
+      TabOrder = 1
+      Text = '0'
+    end
+    object VertUnitCombo: TComboBox
+      Left = 180
+      Height = 24
+      Top = 70
+      Width = 151
+      ItemHeight = 16
+      Style = csDropDownList
+      TabOrder = 2
+    end
+    object VertEvery: TRadioButton
+      Left = 270
+      Height = 20
+      Top = 30
+      Width = 56
+      Caption = 'Every'
+      TabOrder = 3
+    end
+    object VertBetween: TRadioButton
+      Left = 180
+      Height = 20
+      Top = 30
+      Width = 73
+      Caption = 'Between'
+      Checked = True
+      TabOrder = 4
+      TabStop = True
+    end
+  end
+  object Button1: TButton
+    Left = 410
+    Height = 31
+    Top = 30
+    Width = 94
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 410
+    Height = 31
+    Top = 90
+    Width = 94
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 5
+  end
+  object grpEllipse: TGroupBox
+    Left = 20
+    Height = 141
+    Top = 320
+    Width = 501
+    Caption = 'Ellipse'
+    ClientHeight = 120
+    ClientWidth = 497
+    ParentBackground = False
+    TabOrder = 3
+    object Label5: TLabel
+      Left = 20
+      Height = 16
+      Top = 65
+      Width = 129
+      Caption = 'Inner horizontal radius'
+    end
+    object Label6: TLabel
+      Left = 20
+      Height = 16
+      Top = 105
+      Width = 115
+      Caption = 'Inner vertical radius'
+    end
+    object cbEllipseHUnits: TComboBox
+      Left = 250
+      Height = 24
+      Top = 60
+      Width = 151
+      ItemHeight = 16
+      Style = csDropDownList
+      TabOrder = 2
+    end
+    object cbEllipseVUnits: TComboBox
+      Left = 250
+      Height = 24
+      Top = 100
+      Width = 151
+      ItemHeight = 16
+      Style = csDropDownList
+      TabOrder = 4
+    end
+    object edtHRadius: TEdit
+      Left = 160
+      Height = 24
+      Top = 60
+      Width = 80
+      TabOrder = 1
+      Text = '0'
+    end
+    object edtVRadius: TEdit
+      Left = 160
+      Height = 24
+      Top = 100
+      Width = 80
+      TabOrder = 3
+      Text = '0'
+    end
+    object cbRotate: TCheckBox
+      Left = 20
+      Height = 20
+      Top = 25
+      Width = 224
+      Caption = 'Rotate symbols around the ellipse'
+      TabOrder = 0
+    end
+  end
+  object cbEllipse: TCheckBox
+    Left = 20
+    Height = 20
+    Top = 290
+    Width = 186
+    Caption = 'Wrap grid around an ellipse'
+    TabOrder = 2
+    OnClick = cbEllipseClick
+  end
+end

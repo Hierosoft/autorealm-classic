@@ -1,8 +1,10 @@
 unit CustomHint;
 
+{$MODE Delphi}
+
 interface
 
-uses Windows, Graphics;
+uses LCLIntf, LCLType, LMessages, Graphics;
 
   const
     clParchment = $E0FFFF;

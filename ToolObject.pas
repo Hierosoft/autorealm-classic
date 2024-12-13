@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit ToolObject;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, Geometry;
+uses SysUtils, LCLIntf, LCLType, LMessages, Messages, Classes, Graphics, Controls, Forms, Geometry;
 
 
 type TToolState = (tsOff, tsStarted);
@@ -58,7 +60,7 @@ type TToolState = (tsOff, tsStarted);
 
 implementation
 
-uses Main, MapObject, Snap, SettingsDialog;
+uses MAIN, MapObject, Snap, SettingsDialog;
 
 const PanMarginStart = 20;
       PanMarginStop  = 50;

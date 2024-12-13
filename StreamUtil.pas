@@ -1,8 +1,10 @@
 unit StreamUtil;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, StdCtrls,
+uses SysUtils, LCLIntf, LCLType, LMessages, Messages, Classes, Graphics, Controls, Forms, StdCtrls,
      Menus;
 
 function ReadStringFromStream(stream:TStream):string;

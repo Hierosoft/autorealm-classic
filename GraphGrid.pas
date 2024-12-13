@@ -17,10 +17,12 @@
  +------------------------------------------------------------------------+}
 unit GraphGrid;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Messages, Classes, Graphics, Controls, Forms, StdCtrls,
-     Menus, XDOM_2_3;
+uses SysUtils, LCLIntf, LCLType, LMessages, Messages, Classes, Graphics, Controls, Forms, StdCtrls,
+     Menus{, XDOM_2_3};
 
 const DefaultUnit=12;
       gfGridOnTop = 1;
@@ -271,7 +273,7 @@ var oldcolor:TColor;
         _\/_    ==>   BA
          /\          DABD
         /  \         A  B
-        ¯¯¯¯         CCCC
+        Â¯Â¯Â¯Â¯         CCCC
     }
     var w,h:Coord;
         i,j:integer;

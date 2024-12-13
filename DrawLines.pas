@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit DrawLines;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Classes, Graphics, Geometry, Logging;
+uses SysUtils, LCLIntf, LCLType, LMessages, Classes, Graphics, Geometry, Logging;
 
 type
      TFullStyle = Packed Record
@@ -113,7 +115,7 @@ const
 
 implementation
 
-uses Main,Printers,Math;
+uses MAIN,Printers,Math;
 
 type GlyphData=record                    // Constant data struct for glyph line styles
        Width,Count,Start:integer;

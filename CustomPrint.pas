@@ -17,9 +17,11 @@
  +------------------------------------------------------------------------+}
 unit CustomPrint;
 
+{$MODE Delphi}
+
 interface
 
-uses Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
+uses LCLIntf, LCLType, LMessages, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
   Buttons, ExtCtrls, Spin, Printers, Geometry, Primitives;
 
 type
@@ -100,9 +102,9 @@ var
 
 implementation
 
-uses WinSpool, MapObject, Main, LocalizedStrings;
+uses WinSpool, MapObject, MAIN, LocalizedStrings;
 
-{$R *.dfm}
+{$R *.lfm}
 
 var SmallMap:TBitmap;
     MapView:ViewPoint;

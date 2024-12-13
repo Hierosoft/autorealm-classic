@@ -1,5 +1,7 @@
 unit LocalizedStrings;
 
+{$MODE Delphi}
+
 interface
 resourcestring
   res_application_title   = 'AutoREALM';
@@ -35,7 +37,7 @@ resourcestring
   res_main_file_exist2 =    'File already exists';
   res_main_file_changes =   'Save current map?  Changes include:';
   res_main_file_changes2 =  'Existing Map has changed';
-  res_main_rotate_degrees = 'Rotate %g°'; //g evoid FloattoStr
+  res_main_rotate_degrees = 'Rotate %gÂ°'; //g evoid FloattoStr
   res_main_color_change_backgd = 'Change Background Color';
   res_main_color_change_grid = 'Change Grid Color';
   res_main_print_new_file = 'AutoREALM : New file';

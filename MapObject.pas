@@ -17,11 +17,13 @@
  +------------------------------------------------------------------------+}
 unit MapObject;
 
+{$MODE Delphi}
+
 interface
 
-uses SysUtils, Windows, Classes, Graphics, DrawLines, Forms, Primitives, Clipbrd,
-  MatrixMath, Geometry, ImageCheckListBox, StdCtrls, LocalizedStrings, jpeg, XDOM_2_3,
-  DIMime;
+uses SysUtils, LCLIntf, LCLType, LMessages, Classes, Graphics, DrawLines, Forms, Primitives, Clipbrd,
+  MatrixMath, Geometry, ImageCheckListBox, StdCtrls, LocalizedStrings{, XDOM_2_3,
+  DIMime};
 
 const // AutoREALM pre-release versions (prior to 1.0)
       // Oldest supported file format
@@ -355,7 +357,7 @@ Function  GetCoordRectProperty(E: TDOMElement; ElementName: String): CoordRect;
 
 implementation
 
-uses Main, SettingsDialog, Math, GraphGrid, MapSettings, Dialogs, StreamUtil, Menus, XMLUnit;
+uses MAIN, SettingsDialog, Math, GraphGrid, MapSettings, Dialogs, StreamUtil, Menus, XMLUnit;
 
 const
   selborder = 3;
