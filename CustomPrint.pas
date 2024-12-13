@@ -102,7 +102,7 @@ implementation
 
 uses WinSpool, MapObject, Main, LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 var SmallMap:TBitmap;
     MapView:ViewPoint;

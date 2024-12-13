@@ -50,7 +50,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 
 procedure TScaleForm.UniformRadioBtnClick(Sender: TObject);

@@ -852,7 +852,7 @@ uses ReplacementOverlay, Splash, About, Skew, MapSettings, Snap, Clipbrd,
   CustomPrint, movesel, CreateArray, DefineNewSymbol, NewGroup, LocalizedStrings,
   CustomHint, BitmapProperties, CTManager, frmMakeFrom3DUnit;
 
-{$R *.DFM}
+{$R *.dfm}
 
 {$R Resource.res}
 
@@ -3208,7 +3208,7 @@ begin
       pt := Map.PushPinPoint[index];
       d := Distance(pt.X, pt.Y, cursorx, cursory);
       a := Angle(pt.X, pt.Y, cursorx, cursory);
-      s := Format('%.1f°   %f %s', [a, (Map.CurrentView.Grid.GraphUnitConvert *
+      s := Format('%.1fï¿½   %f %s', [a, (Map.CurrentView.Grid.GraphUnitConvert *
           Map.CurrentView.Grid.GraphScale) * d,
         Map.CurrentView.Grid.GraphUnits]);
     end

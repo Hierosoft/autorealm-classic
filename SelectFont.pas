@@ -78,7 +78,7 @@ uses Geometry, Main, MapObject, SettingsDialog, LocalizedStrings;
 const FontSizeList:array[1..24] of integer=
 (4,5,6,7,8,9,10,12,14,16,18,20,24,28,30,32,36,40,48,56,64,72,80,96);
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure AssignTextAttribs(attrib:TextAttrib);
 var SaveChangeProc:TNotifyEvent;

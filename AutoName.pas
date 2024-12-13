@@ -54,7 +54,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 uses AutoNameGenerator,SelectFont,Clipbrd,LocalizedStrings;
 

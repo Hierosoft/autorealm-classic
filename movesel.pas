@@ -55,7 +55,7 @@ implementation
 
 uses MapObject;
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TMoveSelection.OffsetXChange(Sender: TObject);
 begin

@@ -40,7 +40,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TDeleteViewForm.FormShow(Sender: TObject);
 var s:string;

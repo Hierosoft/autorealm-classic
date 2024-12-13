@@ -58,7 +58,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TChartGridDialog.SetPerimeterPoints(n:integer);
 begin

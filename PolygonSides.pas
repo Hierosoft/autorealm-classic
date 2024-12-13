@@ -40,6 +40,6 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 end.

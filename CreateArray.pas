@@ -66,7 +66,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TArrayForm.FormShow(Sender: TObject);
 begin

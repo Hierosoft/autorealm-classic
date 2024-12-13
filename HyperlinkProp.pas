@@ -40,7 +40,7 @@ procedure AssignHyperlinkAttribs(attrib:TextAttrib);
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 uses MapObject, LocalizedStrings;
 

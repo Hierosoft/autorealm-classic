@@ -58,7 +58,7 @@ implementation
 
 uses Main, MapObject, LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 var viewWidth,viewHeight:integer;
 

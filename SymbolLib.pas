@@ -84,7 +84,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 uses Main,MapObject,Primitives,NewGroup,DefineNewSymbol,SettingsDialog,Buttons,LocalizedStrings;
 

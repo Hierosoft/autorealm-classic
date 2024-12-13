@@ -72,7 +72,7 @@ implementation
 
 uses LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 
 procedure TSettings.FormCloseQuery(Sender: TObject; var CanClose: Boolean);

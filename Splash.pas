@@ -38,7 +38,7 @@ var
 
 implementation
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TSplashForm.FormShow(Sender: TObject);
 begin

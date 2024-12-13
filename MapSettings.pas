@@ -86,7 +86,7 @@ implementation
 
 uses Main,GraphGrid,MapObject,Primitives,LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 procedure TMapSettingsDialog.SetGraphScale(which:integer; text:string; multiplier:double);
 var f:double;

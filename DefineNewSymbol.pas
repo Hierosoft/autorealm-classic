@@ -33,7 +33,7 @@ implementation
 
 uses SymbolLib,SymbolFile,MapObject, Main, LocalizedStrings;
 
-{$R *.DFM}
+{$R *.dfm}
 
 var lastGroup:integer;
     lastComments:string;
